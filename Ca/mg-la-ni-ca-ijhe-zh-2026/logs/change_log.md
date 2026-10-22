@@ -118,3 +118,9 @@
 - action: [local source path omitted]
 - status: success
 - note: build/main.pdf，15页；引用和标签检查无未定义项。日志含已有字体、xeCJK、书签Unicode及Underfull hbox警告。
+
+## [2026-10-22] 腐蚀后SEM形貌补充
+- object: 两个main.tex入口；第3.3.2节。
+- action: 在析氢结果后插入24 h腐蚀表面形貌分析，补充SEM方法并更新讨论中的证据范围。
+- status: warning
+- note: 新拼图已在本次对话生成，使用Times New Roman编号/比例尺，统一物理视场；二进制图片尚未写入仓库。图调用采用存在性判断，避免缺图导致编译中断。图片目标路径为project/figures/figure-02-corrosion-sem.png。随对话交付的完整工程与PDF包含该图。
