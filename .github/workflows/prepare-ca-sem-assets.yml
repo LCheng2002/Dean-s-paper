@@ -1,0 +1,68 @@
+name: Prepare Ca SEM editing assets
+on:
+  push:
+    paths:
+      - '.github/workflows/prepare-ca-sem-assets.yml'
+permissions:
+  contents: read
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare Times New Roman figure annotations
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq cabextract
+          python -m pip install --quiet fonttools
+          mkdir -p "$RUNNER_TEMP/ca-fonts" out/project/figures
+          curl -fL --retry 3 'https://downloads.sourceforge.net/project/corefonts/the%20fonts/final/times32.exe' -o "$RUNNER_TEMP/ca-fonts/times32.exe"
+          echo "db56595ec6ef5d3de5c24994f001f03b2a13e37cee27bc25c58f6f43e8f807ab  $RUNNER_TEMP/ca-fonts/times32.exe" | sha256sum -c -
+          cabextract -q -d "$RUNNER_TEMP/ca-fonts" "$RUNNER_TEMP/ca-fonts/times32.exe"
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          from fontTools.ttLib import TTFont
+          from fontTools.pens.svgPathPen import SVGPathPen
+          fonts = {p.name.lower():p for p in Path(os.environ['RUNNER_TEMP'],'ca-fonts').glob('*')}
+          regular = TTFont(fonts['times.ttf'])
+          bold = TTFont(fonts['timesbd.ttf'])
+          assert 'Times New Roman' in regular['name'].getDebugName(1)
+          def text_paths(text, font, x, y, size):
+              scale=size/font['head'].unitsPerEm
+              gs=font.getGlyphSet(); cmap=font.getBestCmap(); cursor=0; paths=[]
+              for char in text:
+                  name=cmap[ord(char)]
+                  pen=SVGPathPen(gs); gs[name].draw(pen)
+                  d=pen.getCommands()
+                  if d:
+                      paths.append(f'<path transform="translate({cursor},0)" d="{d}"/>')
+                  cursor += font['hmtx'].metrics[name][0]
+              shapes=''.join(paths)
+              stroke=2.5/scale
+              return f'<g transform="translate({x},{y}) scale({scale},-{scale})"><g fill="black" stroke="black" stroke-width="{stroke}" stroke-linejoin="round">{shapes}</g><g fill="white">{shapes}</g></g>'
+          W,H,PW,PH,GAP,MARGIN=3132,2108,1536,1024,20,20
+          svg=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">']
+          for i,label in enumerate(['(a)','(b)','(c)','(d)']):
+              ox=MARGIN+(i%2)*(PW+GAP); oy=MARGIN+(i//2)*(PH+GAP)
+              svg.append(text_paths(label,bold,ox+28,oy+92,88))
+              bar=200/1036*PW; right=ox+PW-66; left=right-bar; yy=oy+PH-58
+              svg.append(f'<rect x="{left-3}" y="{yy-3}" width="{bar+6}" height="18" fill="black"/>')
+              svg.append(f'<rect x="{left}" y="{yy}" width="{bar}" height="12" fill="white"/>')
+              text='200 µm'; size=70
+              width=sum(regular['hmtx'].metrics[regular.getBestCmap()[ord(c)]][0] for c in text)*size/regular['head'].unitsPerEm
+              svg.append(text_paths(text,regular,(left+right-width)/2,yy-22,size))
+          svg.append('</svg>')
+          Path('out/sem-annotations.svg').write_text('\n'.join(svg))
+          Path('out/typography.txt').write_text('Annotation outlines rendered from Microsoft Times New Roman 2.82. No font files included.\n')
+          PY
+          cp Ca/mg-la-ni-ca-ijhe-zh-2026/project/main.tex out/project/main.tex
+          cp Ca/mg-la-ni-ca-ijhe-zh-2026/project/figures/*.png out/project/figures/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ca-sem-editing-assets
+          path: out/
+          retention-days: 1
