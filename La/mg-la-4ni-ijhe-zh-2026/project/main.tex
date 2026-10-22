@@ -1,0 +1,465 @@
+\documentclass[preprint,12pt]{elsarticle}
+\usepackage{iftex}
+\ifXeTeX\else\PackageError{IJHE Chinese migration}{XeLaTeX is required}{}\fi
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{amsmath}
+\usepackage{unicode-math}
+\usepackage{booktabs,graphicx,tabularx}
+\usepackage{caption}
+\usepackage[hidelinks]{hyperref}
+\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{\setmainfont{TeX Gyre Termes}}
+\IfFontExistsTF{STIX Two Math}{\setmathfont{STIX Two Math}}{\setmathfont{Latin Modern Math}}
+\IfFontExistsTF{Songti SC}{\setCJKmainfont{Songti SC}}{\setCJKmainfont{FandolSong-Regular}}
+\IfFontExistsTF{Heiti SC}{\setCJKsansfont{Heiti SC}}{\setCJKsansfont{FandolHei-Regular}}
+\catcode`℃=\active
+\protected\def℃{\ensuremath{{}^{\circ}\mathrm{C}}}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\renewcommand{\refname}{参考文献}
+\abstracttitle{摘要}
+\keywordtitle{关键词}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+\setlength{\textfloatsep}{9pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{4pt}
+\setlength{\belowcaptionskip}{2pt}
+\captionsetup[figure]{justification=raggedright,singlelinecheck=false}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.78}
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpsep}{8pt plus 2pt minus 2pt}
+\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother
+\journal{International Journal of Hydrogen Energy}
+\begin{document}
+\begin{frontmatter}
+\title{{\fontsize{18}{22}\selectfont La含量对Mg-\textit{x}La-4Ni合金组织演化、储氢性能及界面作用的影响}}
+\author[aff1]{【作者姓名待补充】\corref{cor1}}
+\ead{【通信作者邮箱待补充】}
+\cortext[cor1]{通信作者。}
+\affiliation[aff1]{organization={【单位待补充】}, city={【城市待补充】}, postcode={【邮编待补充】}, country={China}}
+\begin{abstract}
+为明确La含量对Mg-xLa-4Ni（x = 2、4、8、12 wt.\%）合金组织演化和储氢行为的影响规律，采用X射线衍射、扫描电子显微镜、压力-组成-温度测试和等温动力学分析进行表征，并结合第一性原理计算分析Mg$_{\mathrm{2}}$Ni和LaH$_{\mathrm{3}}$相关界面的可能作用。合金均由α-Mg、Mg$_{\mathrm{2}}$Ni和Mg$_{\mathrm{17}}$La$_{\mathrm{2}}$相组成，La含量增加主要改变第二相的形貌与空间分布；8La合金中第二相局部偏聚和粗化最为明显，12La合金中的第二相分布更连续且相对均匀。在340 ℃下，8 h吸氢（3 MPa）和8 h放氢（0.1 MPa）容量随La含量增加先降低后回升：2La合金分别达到6.40 wt.\%和5.99 wt.\%；8La合金降至最低，12La合金回升至6.34 wt.\%和5.88 wt.\%。各合金的吸氢焓变为−74.16至−70.57 kJ·mol$^{-1}$，放氢焓变为72.54–74.87 kJ·mol$^{-1}$，表观脱氢活化能分别为103.9、99.1、96.8和81.8 kJ·mol$^{-1}$。Mg/Mg$_{\mathrm{2}}$Ni界面的H$_{\mathrm{2}}$解离吸附能量差为−0.945 eV；MgH$_{\mathrm{2}}$/LaH$_{\mathrm{3}}$界面使H空位形成能降低0.345 eV，并将H迁移能垒由纯MgH$_{\mathrm{2}}$的0.655 eV降至0.445 eV；MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$Ni界面的迁移能垒为0.108 eV。第一性原理计算用于识别所选界面构型可能影响的基元反应步骤，不用于重现实验中La含量变化对应的活化能差异。结果表明，可利用容量受到α-Mg基体容量贡献、第二相自身储氢贡献及其分布均匀性的共同影响，不同第二相相关界面则可能分别参与H$_{\mathrm{2}}$活化、H脱出和H迁移等局部过程。
+\end{abstract}
+\begin{keyword}
+镁基储氢合金 \sep La添加 \sep 显微组织 \sep 吸放氢动力学 \sep 异相界面 \sep 第一性原理计算
+\end{keyword}
+\end{frontmatter}
+\fontsize{10.5}{18}\selectfont
+
+\section{引言}
+
+氢能的大规模应用依赖于安全、高密度且可逆的储氢技术。镁基材料具有7.66 wt.\%的理论储氢容量，并具有资源丰富和成本较低等优势，是重要的固态储氢候选材料。然而，MgH$_{\mathrm{2}}$热力学稳定性较高，且H$_{\mathrm{2}}$解离、H扩散和Mg-H键断裂等基元步骤缓慢，导致吸放氢动力学不足。Pozzo和Alfè计算得到H$_{\mathrm{2}}$在Mg(0001)表面的解离能垒为1.18 ± 0.03 eV，不同交换关联泛函所得密度泛函理论结果为0.44–1.07 eV，说明表面H$_{\mathrm{2}}$活化是Mg吸氢的重要限速环节\cite{ref1}。因此，通过合金化、纳米化和催化改性构建活性位点与快速氢输运通道，是改善镁基材料储氢性能的主要策略\cite{ref2,ref3,ref4}。
+
+La与氢具有较强亲和力，在Mg合金中可形成Mg-La金属间化合物，并在氢化后转化为LaH$_{\mathrm{3}}$相关氢化物。Mg$_{\mathrm{3}}$La的可逆储氢量可达2.89 wt.\%\cite{ref5}；La$_{\mathrm{2}}$Mg$_{\mathrm{17}}$在室温、0.5 MPa下可吸收约10个H原子，对应储氢量约1.44 wt.\%\cite{ref6}。Mg-La-Ni体系氢化过程中原位形成的LaH$_{\mathrm{2}}$和LaH$_{\mathrm{3}}$可提供弥散界面和氢迁移通道，并改善循环过程中的组织稳定性\cite{ref7,ref8}。但La含量过高会消耗部分α-Mg并增加低容量第二相的比例，因而可能同时引起容量稀释和动力学促进。
+
+Ni是改善镁基储氢动力学的常用合金化元素。Mg$_{\mathrm{2}}$Ni在吸氢过程中可逆转化为Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$\cite{ref9}，并通过促进H$_{\mathrm{2}}$解离、原子H迁移及增加Mg/MgH$_{\mathrm{2}}$异相界面来提高反应速率\cite{ref10}。Mg-Ni-La合金中Ni含量的改变会显著调节Mg$_{\mathrm{2}}$Ni相体积分数、共晶组织和吸放氢速率\cite{ref11,ref12}。Ding等制备的Mg-3.8Ni-1.8La合金在325 ℃、3 MPa下2 h吸氢量达到7.19 wt.\%；在175 ℃、1 MPa下2 h仍可吸氢5.59 wt.\%；并可在325 ℃下约2 min完成脱氢\cite{ref13}。这些结果说明，Mg-Mg$_{\mathrm{2}}$Ni组织与La微合金化之间可存在有利的协同作用\cite{ref13,ref14}。
+
+现有研究多聚焦于固定La含量下的Ni调控，或针对单一Mg-La-Ni成分开展性能优化。原位形成的稀土氢化物-Mg-Mg$_{\mathrm{2}}$Ni复合结构有利于循环稳定性和反应动力学\cite{ref15}，Mg-Ni-La合金的凝固组织也对元素比例高度敏感\cite{ref16,ref17}。因此，在Ni含量固定时，La所引起的α-Mg稀释、Mg$_{\mathrm{17}}$La$_{\mathrm{2}}$和Mg$_{\mathrm{2}}$Ni析出以及多相界面构建如何共同决定可利用储氢容量与脱氢动力学，仍缺少系统的实验-计算关联研究。
+
+基于此，本文以Mg-\textit{x}La-4Ni（x = 2、4、8、12 wt.\%）合金为对象，系统研究La含量对物相组成、第二相分布、吸放氢容量、热力学参数和表观脱氢活化能的影响。进一步构建Mg/LaH$_{\mathrm{3}}$、Mg/Mg$_{\mathrm{2}}$Ni、Mg/Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$、MgH$_{\mathrm{2}}$/LaH$_{\mathrm{3}}$、MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$和MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$Ni界面模型，从H$_{\mathrm{2}}$解离、H空位形成、Mg-H键变化和H迁移能垒四个层面分析第二相的界面作用，为Mg-La-Ni系储氢合金的成分与组织设计提供依据。
+
+\section{实验方法}
+
+\subsection{合金及粉末制备}
+
+采用保护气氛熔炼与铸造成形工艺制备300 kg级Mg-\textit{x}La-4Ni合金，名义成分中x = 2、4、8和12，La与Ni含量均以质量分数计，Mg为余量。纯Mg、Mg-30La和Mg-30Ni中间合金在200 ℃下预热3 h以上；随后将纯Mg置于坩埚中，在体积分数为0.1\%的SF$_{\mathrm{6}}$和99.9\%的CO$_{\mathrm{2}}$混合气体保护下熔化。待Mg完全熔化并将熔体加热至730～760 ℃后，按名义成分加入预热后的Mg-90La和Mg-30Ni中间合金；中间合金完全熔化后充分搅拌，清除熔体表面浮渣，并在700～720 ℃静置15～20 min。随后将熔体降温至680～700 ℃，采用镁合金转液泵在60 min内完成浇注，获得单锭质量约5 kg的合金铸锭。选取铸锭经常规切削、机械粉碎和筛分，收集通过80目筛的合金粉末，用于物相分析和储氢性能测试。粉末制备与保存过程中尽量减少空气暴露，以抑制表面氧化。
+
+\subsection{成分、物相与显微组织表征}
+
+采用多功能X射线衍射仪（D8 ADVANCE Da Vinci，Bruker，德国；Cu Kα辐射）分析铸态与氢化后合金的物相组成，并结合标准物相卡片进行峰位匹配，确定α-Mg、Mg$_{\mathrm{2}}$Ni、Mg$_{\mathrm{17}}$La$_{\mathrm{2}}$及氢化后的MgH$_{\mathrm{2}}$、Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$和LaH$_{\mathrm{3}}$等相。氢化态XRD样品采用活化后的合金，在340 ℃、3.1 MPa氢压下氢化8 h后获得。合金中La和Ni的实际含量采用电感耦合等离子体发射光谱仪（ICP-OES，iCAP 7600，Thermo Fisher Scientific，美国）测定。铸态样品经镶嵌、磨光和抛光后，采用扫描电子显微镜（SEM，Helios 5 UX，Thermo Fisher Scientific，美国）观察显微组织，加速电压为10 kV，电子束流为1.4 nA，并通过能谱分析（EDS）表征元素分布。
+
+为比较不同成分合金中第二相的分布特征，在相同放大倍数和成像条件下选取具有代表性的SEM视场，结合EDS元素分布，从第二相的形貌、连续性、局部偏聚和粗化程度等方面进行定性分析。该分析仅用于比较不同成分合金的组织分布特征，不依据二维图像进行物相定量。
+
+表1列出了ICP-OES测得的四种合金中La和Ni含量。每种样品均进行3组平行测试，表中结果为3组测试的平均值，±后的数值表示测量误差。La实测含量分别为2.12 ± 0.07、4.19 ± 0.02、7.78 ± 0.04和12.05 ± 0.07 wt.\%，与设计的La含量梯度一致；Ni实测含量为3.79～4.06 wt.\%，均接近名义含量4 wt.\%。因此，四种样品的实际成分总体符合Mg-xLa-4Ni的设计范围，可用于比较La含量变化对组织和储氢性能的影响。
+
+\begin{table}[htbp]
+\centering
+\caption{Mg-\textit{x}La-4Ni合金中La和Ni的ICP-OES测定结果}
+\label{tab:1}
+\begingroup
+\fontsize{9.5}{12}\selectfont
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{lcc}
+\toprule
+合金样品 & La (wt.\%) & Ni (wt.\%) \\
+\midrule
+Mg-2La-4Ni & 2.12 $\pm$ 0.07 & 4.06 $\pm$ 0.02 \\
+Mg-4La-4Ni & 4.19 $\pm$ 0.02 & 3.89 $\pm$ 0.02 \\
+Mg-8La-4Ni & 7.78 $\pm$ 0.04 & 3.79 $\pm$ 0.01 \\
+Mg-12La-4Ni & 12.05 $\pm$ 0.07 & 3.99 $\pm$ 0.03 \\
+\bottomrule
+\end{tabular}
+\endgroup
+\end{table}
+
+\subsection{第一性原理计算方法}
+
+第一性原理计算采用Vienna Ab initio Simulation Package（VASP 6.3.2）完成\cite{ref18}，结构建模和可视化采用VESTA\cite{ref19}。离子实与价电子相互作用采用投影增强波（PAW）方法描述\cite{ref20,ref21}，交换-关联泛函采用广义梯度近似下的Perdew-Burke-Ernzerhof（GGA-PBE）形式\cite{ref22}，平面波截断能为500 eV。结构优化时电子自洽收敛标准为1.0 × 10$^{-5}$ eV，原子受力收敛标准为0.02 eV·Å$^{-1}$；固定晶胞参数，仅弛豫原子位置。静态能量计算的电子收敛标准进一步收紧至1.0 × 10$^{-6}$ eV。
+
+本文构建六类异质界面模型。用于H$_{\mathrm{2}}$活化行为分析的Mg基界面分别为Mg$(11\bar{2}0)$/LaH$_{\mathrm{3}}$(110)、Mg$(10\bar{1}0)$/Mg$_{\mathrm{2}}$Ni(100)和Mg$(02\bar{2}\bar{3})$/Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$(010)，完整界面模型分别包含88、42和84个原子，加入H$_{\mathrm{2}}$或2H后的计算构型分别包含90、44和86个原子。用于H空位形成、Mg-H键长和H迁移分析的氢化物界面分别为MgH$_{\mathrm{2}}$(100)/LaH$_{\mathrm{3}}$(110)、MgH$_{\mathrm{2}}$(001)/Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$(100)和MgH$_{\mathrm{2}}$$(01\bar{1})$/Mg$_{\mathrm{2}}$Ni(100)，完整模型分别包含100、68和72个原子，单H空位及NEB构型分别包含99、67和71个原子。其中，MgH$_{\mathrm{2}}$$(01\bar{1})$属于四方MgH$_{\mathrm{2}}$的$\{011\}$晶面族；另采用2 × 2 × 3金红石型MgH$_{\mathrm{2}}$体相超胞作为H迁移对照。Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$相关界面均采用低温有序相结构作为0 K第一性原理计算模型，用于比较所选局部构型的相对能量趋势，不直接代表280～340 ℃下高温结构的动态无序特征。
+
+界面结构优化采用共轭梯度算法（IBRION = 2，ISIF = 2），保持晶胞参数不变并弛豫全部原子位置，未额外固定远离界面的原子层。各界面的两相初始间距为2 Å，沿界面法向设置15 Å真空层。对于非正交或高指数界面，采用整数变换矩阵T构建超胞，其中前两行定义面内基矢，第三行定义界面法向；面内长度失配率按δi = |L1,i − L2,i|/[(L1,i + L2,i)/2] × 100\%计算。Mg/Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$界面的Mg侧变换矩阵为[[3, 3, 2], [2, 0, 0], [−1, −2, 1]]，两侧原始面内夹角分别为70.17°和113.33°；将后者换算为等效锐角66.67°后，角度差为3.50°，匹配后的最终超胞γ角为91.75°。不同模型采用Γ中心k点网格，以维持近似可比的倒空间采样密度。
+
+各界面及纯MgH$_{\mathrm{2}}$对照模型的最终超胞参数、原子组成、层数、失配率和k点设置汇总于表2和表3。表中层数按晶面取向中两相的先后顺序列示；完整界面与加入H$_{\mathrm{2}}$、形成单H空位后的实际计算构型分别列出，以明确不同能量计算所采用的原子数。
+
+\begin{table}[htbp]
+\centering
+\caption{Mg基界面模型的结构参数与计算设置}
+\label{tab:2}
+\begingroup
+\fontsize{9}{11}\selectfont
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.145\textwidth}>{\raggedright\arraybackslash}p{0.165\textwidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.125\textwidth}c@{}}
+\toprule
+模型/用途 & 晶面取向 & 最终超胞参数 & 组成（原子数）；层数 & 面内失配率 & $\Gamma$中心k点 \\
+\midrule
+Mg/LaH$_3$；\linebreak H$_2$解离 & Mg$(11\bar{2}0)$/\linebreak LaH$_3$(110) & 5.566 $\times$ 15.698 $\times$\linebreak 27.725 Å；$\gamma=90^\circ$ & 完整 Mg$_{24}$La$_{16}$H$_{48}$ (88)；\linebreak H$_2$/2H Mg$_{24}$La$_{16}$H$_{50}$ (90)；4/4层 & 0.25\%, 0.83\%；\linebreak $\Delta\theta=0^\circ$ & 5 $\times$ 2 $\times$ 1 \\
+Mg/Mg$_2$Ni；\linebreak H$_2$解离 & Mg$(10\bar{1}0)$/\linebreak Mg$_2$Ni(100) & 12.954 $\times$ 5.181 $\times$\linebreak 27.214 Å；$\gamma=90^\circ$ & 完整 Mg$_{36}$Ni$_6$ (42)；\linebreak H$_2$/2H Mg$_{36}$Ni$_6$H$_2$ (44)；6/6层 & 1.80\%, 1.15\%；\linebreak $\Delta\theta=0^\circ$ & 2 $\times$ 5 $\times$ 1 \\
+Mg/Mg$_2$NiH$_4$；\linebreak H$_2$解离 & Mg$(02\bar{2}\bar{3})$/\linebreak Mg$_2$NiH$_4$(010) & 14.206 $\times$ 5.969 $\times$\linebreak 29.897 Å；$\gamma=91.75^\circ$ & 完整 Mg$_{44}$Ni$_8$H$_{32}$ (84)；\linebreak H$_2$/2H Mg$_{44}$Ni$_8$H$_{34}$ (86)；14/32层 & 0.25\%, 0.014\%；\linebreak $\Delta\theta=3.50^\circ$ & 2 $\times$ 5 $\times$ 1 \\
+\bottomrule
+\end{tabularx}
+\endgroup
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{氢化物界面及纯MgH$_2$对照模型的结构参数与计算设置}
+\label{tab:3}
+\begingroup
+\fontsize{9}{11}\selectfont
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.145\textwidth}>{\raggedright\arraybackslash}p{0.165\textwidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.125\textwidth}c@{}}
+\toprule
+模型/用途 & 晶面取向 & 最终超胞参数 & 组成（原子数）；层数 & 面内失配率 & $\Gamma$中心k点 \\
+\midrule
+MgH$_2$/\linebreak LaH$_3$；空位、键长、迁移 & MgH$_2$(100)/\linebreak LaH$_3$(110) & 13.541 $\times$ 7.677 $\times$\linebreak 26.512 Å；$\gamma=53.99^\circ$ & 完整 Mg$_{12}$La$_{16}$H$_{72}$ (100)；\linebreak 空位/NEB Mg$_{12}$La$_{16}$H$_{71}$ (99)；6/4层 & 1.63\%, 5.30\%；\linebreak $\Delta\theta=1.53^\circ$ & 3 $\times$ 5 $\times$ 1 \\
+MgH$_2$/\linebreak Mg$_2$NiH$_4$；空位、键长、迁移 & MgH$_2$(001)/\linebreak Mg$_2$NiH$_4$(100) & 6.337 $\times$ 8.989 $\times$\linebreak 31.423 Å；$\gamma=45.17^\circ$ & 完整 Mg$_{20}$Ni$_8$H$_{40}$ (68)；\linebreak 空位/NEB Mg$_{20}$Ni$_8$H$_{39}$ (67)；2/26层 & 0.19\%, 0.80\%；\linebreak $\Delta\theta=0.34^\circ$ & 5 $\times$ 4 $\times$ 1 \\
+MgH$_2$/\linebreak Mg$_2$Ni；H迁移 & MgH$_2$$(01\bar{1})$/\linebreak Mg$_2$Ni(100) & 13.251 $\times$ 5.268 $\times$\linebreak 27.435 Å；$\gamma=90^\circ$ & 完整 Mg$_{30}$Ni$_6$H$_{36}$ (72)；\linebreak 空位/NEB Mg$_{30}$Ni$_6$H$_{35}$ (71)；9/6层 & 2.71\%, 4.44\%；\linebreak $\Delta\theta=0^\circ$ & 3 $\times$ 5 $\times$ 1 \\
+纯MgH$_2$；H迁移对照 & 2 $\times$ 2 $\times$ 3体相超胞 & 8.953 $\times$ 8.953 $\times$ 8.978 Å；$\gamma=90^\circ$ & 完整 Mg$_{24}$H$_{48}$ (72)；空位/NEB Mg$_{24}$H$_{47}$ (71)；三维体相 & — & 3 $\times$ 3 $\times$ 3 \\
+\bottomrule
+\end{tabularx}
+\endgroup
+\end{table}
+
+孤立H$_{\mathrm{2}}$分子置于足够大的真空盒中，并采用1 × 1 × 1 Gamma点计算。H$_{\mathrm{2}}$由分子吸附态转变为解离吸附态的能量差定义为ΔE$_{\mathrm{dis}}$ = E$_{\mathrm{dis}}$ − E$_{\mathrm{mol}}$，其中E$_{\mathrm{dis}}$和E$_{\mathrm{mol}}$分别为界面上解离吸附态与分子吸附态的总能量；ΔE$_{\mathrm{dis}}$ < 0表示解离吸附态在热力学上更稳定，但该能量差不等同于H$_{\mathrm{2}}$解离活化能垒。H空位形成能和Mg-H键长均基于优化结构的静态计算结果获得。
+
+H迁移的最小能量路径采用弹性带（NEB）方法计算，并在普通NEB优化后使用攀爬图像NEB（CI-NEB）精化过渡态\cite{ref23}。纯MgH$_{\mathrm{2}}$和MgH$_{\mathrm{2}}$/LaH$_{\mathrm{3}}$路径设置3个中间镜像，MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$和MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$Ni路径设置5个中间镜像，弹簧常数设为−5 eV·Å$^{-2}$。以初态能量为零点，正向迁移能垒定义为过渡态与初态的能量差，反向迁移能垒定义为过渡态与终态的能量差。所选路径均采用H空位迁移机制：纯MgH$_{\mathrm{2}}$对照中，邻近赤道位H向轴向H空位迁移；MgH$_{\mathrm{2}}$/LaH$_{\mathrm{3}}$、MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$和MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$Ni界面模型中，均考察MgH$_{\mathrm{2}}$侧H原子向邻近界面H空位的迁移，分别对应H32→H54、H30→H42和H72→H59路径，原子编号与各模型计算结构中的编号一致。各路径的初态为迁移H仍占据原晶格位置且目标位点为空位，终态为该H迁入并占据目标空位。
+
+\subsection{储氢热力学与动力学测试}
+
+采用高压容积法装置测试合金的吸放氢性能，单次样品质量约0.3 g。测试前，样品在340 ℃下经多次吸放氢循环活化，并在每次测试前于相同温度抽真空脱氢。分别在340、320和300 ℃下测定压力-组成-温度（PCT）曲线，并由不同温度的平台压力通过van’t Hoff关系\cite{ref24}计算吸放氢焓变和熵变。等温动力学测试温度为340、320、300和280 ℃，吸氢压力为3 MPa，放氢压力为0.1 MPa。容量比较所用吸、放氢量均取8 h终值；动力学曲线中，吸氢过程展示完整8 h数据，放氢过程展示前30 min数据，以突出初期动力学差异。等温放氢反应分数α定义为时间t时的累计放氢量与相同温度下8 h最终放氢量之比，其中t以s计。各温度下均统一选取α为0.2～0.8区间的数据进行JMAK线性拟合；拟合直线的斜率为η，截距为η ln k，据此由截距/η计算ln k。不同温度的ln k用于Arrhenius分析并计算表观脱氢活化能。需要说明的是，本研究各成分的PCT和等温动力学参数均基于单次测试，未进行独立重复实验和统计误差评估，因此相关数值主要用于相同测试条件下不同成分之间的趋势比较。
+
+\section{结果}
+
+\subsection{物相组成与显微组织}
+
+\subsubsection{物相组成}
+
+图~\ref{fig:1}显示，四种Mg-\textit{x}La-4Ni合金均由α-Mg、Mg$_{\mathrm{2}}$Ni和Mg$_{\mathrm{17}}$La$_{\mathrm{2}}$相组成，且α-Mg为主衍射相。Mg$_{\mathrm{2}}$Ni峰在所有样品中均可识别，说明Ni主要以Mg-Ni金属间化合物形式存在。随La含量增加，Mg$_{\mathrm{17}}$La$_{\mathrm{2}}$的特征峰逐渐增强，表明La主要促进该相析出。整体来看，La含量改变未引起新的可检出物相，各合金的基本物相类型保持稳定。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth,height=0.82\textheight,keepaspectratio]{figures/figure-01.png}
+\caption{Mg-\textit{x}La-4Ni系合金的X射线衍射（XRD）图谱}
+\label{fig:1}
+\end{figure}
+
+\subsubsection{显微组织演化}
+
+SEM图像（图~\ref{fig:2}）显示，各合金均由深色基体与浅亮色第二相区组成。EDS面分布（图~\ref{fig:3}）表明，Mg主要分布于深色区域，La和Ni则在枝晶间或晶界附近富集。结合XRD结果，深色连续相可归属为α-Mg基体，富Ni和富La的浅亮色区域分别对应Mg$_{\mathrm{2}}$Ni和Mg$_{\mathrm{17}}$La$_{\mathrm{2}}$为主的金属间化合物。
+
+La含量增加显著改变第二相形貌与空间分布。2La合金中α-Mg基体区尺寸较大，第二相主要沿枝晶间呈细密网络状分布（图~\ref{fig:2}(a)）；4La合金中局部块状第二相增多；8La合金中条块状和层片状第二相在枝晶间及晶界处明显聚集，局部粗化最为突出；12La合金中的第二相分布更连续且相对均匀，8La中显著的局部粗大偏聚有所减弱。上述比较为定性组织观察，不代表各物相的体积分数或质量分数。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth,height=0.82\textheight,keepaspectratio]{figures/figure-02.png}
+\caption{Mg-\textit{x}La-4Ni合金的SEM显微组织图：(a$_1$--a$_3$) 2La；(b$_1$--b$_3$) 4La；(c$_1$--c$_3$) 8La；(d$_1$--d$_3$) 12La。三行放大倍数依次为1000、3000和5000倍}
+\label{fig:2}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth,height=0.82\textheight,keepaspectratio]{figures/figure-03.png}
+\caption{Mg-\textit{x}La-4Ni合金的EDS元素分布图：(a) 2La；(b) 4La；(c) 8La；(d) 12La}
+\label{fig:3}
+\end{figure}
+
+\subsection{储氢性能}
+
+\subsubsection{储氢热力学与氢化产物}
+
+图~\ref{fig:4}显示，四种合金在340、320和300 ℃下的吸、放氢PCT曲线均具有可识别的平台区，且温度升高时平台压力相应增大。各成分的曲线形状总体相似，表明在本研究范围内，La含量未改变主导的可逆氢化/脱氢反应类型。吸氢焓变为负，放氢焓变为正，与Mg/MgH$_{\mathrm{2}}$可逆转变的热力学特征一致。
+
+\begin{equation}\ln\!\left(\frac{P_{\mathrm{H}_2}}{P^0}\right)=\frac{\Delta H}{RT}-\frac{\Delta S}{R}\label{eq:vanthoff}\end{equation}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth,height=0.82\textheight,keepaspectratio]{figures/figure-04-times-new-roman.png}
+\caption{Mg-\textit{x}La-4Ni合金在340 ℃、320 ℃和300 ℃下的PCT曲线：(a) 2La；(b) 4La；(c) 8La；(d) 12La}
+\label{fig:4}
+\end{figure}
+
+为定量比较合金的储氢热力学参数，对不同温度下的PCT平台压力进行van’t Hoff拟合。式~\eqref{eq:vanthoff}中，PH$_{\mathrm{2}}$为平衡氢压，ΔH和ΔS分别为反应焓变和熵变，T为绝对温度，P$_{\mathrm{0}}$为标准压力（1.01 × 10$^{5}$ Pa）。由拟合直线的斜率和截距获得的热力学参数列于表~\ref{tab:4}。
+
+表~\ref{tab:4}表明，La含量由2 wt.\%增加至4 wt.\%时，吸氢焓变的绝对值由70.57增至74.16 kJ·mol$^{-1}$，放氢焓变由72.54增至74.87 kJ·mol$^{-1}$。La含量进一步增加至8和12 wt.\%后，吸氢焓变绝对值分别降至73.62和73.14 kJ·mol$^{-1}$，放氢焓变分别降至74.43和73.29 kJ·mol$^{-1}$（图~\ref{fig:5}）。吸、放氢焓变的最大组间差值分别为3.59和2.33 kJ·mol$^{-1}$，说明La对主体氢化物热力学稳定性的影响有限。
+
+\begin{table}[htbp]
+\centering
+\caption{Mg-\textit{x}La-4Ni合金PCT平台压和热力学数据汇总}
+\label{tab:4}
+\begingroup
+\fontsize{9.5}{12}\selectfont
+\setlength{\tabcolsep}{3.2pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}llccccc@{}}
+\toprule
+合金 & 过程 & 340 ℃ & 320 ℃ & 300 ℃ & $\Delta H$ / kJ mol$^{-1}$ & $\Delta S$ / J mol$^{-1}$ K$^{-1}$ \\
+\midrule
+Mg-2La-4Ni & 吸氢 & 0.639 & 0.416 & 0.243 & $-70.57$ & $-130.51$ \\
+ & 放氢 & 0.629 & 0.401 & 0.233 & 72.54 & 133.56 \\
+Mg-4La-4Ni & 吸氢 & 0.696 & 0.426 & 0.252 & $-74.16$ & $-136.93$ \\
+ & 放氢 & 0.684 & 0.419 & 0.246 & 74.87 & 137.93 \\
+Mg-8La-4Ni & 吸氢 & 0.653 & 0.403 & 0.238 & $-73.62$ & $-135.58$ \\
+ & 放氢 & 0.640 & 0.391 & 0.231 & 74.43 & 136.72 \\
+Mg-12La-4Ni & 吸氢 & 0.694 & 0.432 & 0.255 & $-73.14$ & $-135.23$ \\
+ & 放氢 & 0.677 & 0.418 & 0.248 & 73.29 & 135.09 \\
+\bottomrule
+\end{tabular}
+\endgroup
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth,height=0.82\textheight,keepaspectratio]{figures/figure-05.png}
+\caption{Mg-\textit{x}La-4Ni合金吸氢与放氢过程的van’t Hoff拟合：(a) 2La；(b) 4La；(c) 8La；(d) 12La}
+\label{fig:5}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth,height=0.82\textheight,keepaspectratio]{figures/figure-06.png}
+\caption{Mg-\textit{x}La-4Ni合金吸氢焓变与放氢焓变随La含量的变化}
+\label{fig:6}
+\end{figure}
+
+氢化后XRD图谱（图~\ref{fig:7}）显示，四种合金均以MgH$_{\mathrm{2}}$为主要氢化产物，同时出现Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$和LaH$_{\mathrm{3}}$的特征峰。这表明α-Mg基体是储氢容量的主要来源，而初始合金中的Mg$_{\mathrm{2}}$Ni和富La相也参与氢化反应。随La含量增加，LaH$_{\mathrm{3}}$相关峰增强；残余Mg峰则说明在设定条件下仍有少量基体未完全氢化。与铸态合金相比，α-Mg、Mg$_{\mathrm{2}}$Ni和Mg$_{\mathrm{17}}$La$_{\mathrm{2}}$的衍射强度明显减弱，进一步证明基体和第二相均参与吸氢过程。该物相结果与PCT所表征的Mg/MgH$_{\mathrm{2}}$主体反应一致，并为后续动力学分析和界面模型选择提供了实验依据。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth,height=0.82\textheight,keepaspectratio]{figures/figure-07.png}
+\caption{Mg-\textit{x}La-4Ni系合金氢化后的X射线衍射（XRD）图谱}
+\label{fig:7}
+\end{figure}
+
+\subsubsection{吸放氢动力学与表观活化能}
+
+图~\ref{fig:8}给出各合金在不同温度下的8 h吸氢动力学曲线，图~\ref{fig:9}给出相应的前30 min放氢动力学曲线。吸氢过程均包括初期快速反应和随后缓慢接近平台的阶段；放氢过程也表现为初期快速释氢后逐渐趋于稳定。在两个过程中，温度升高均加快反应并提高相应观测时间窗内的吸、放氢量。280 ℃下放氢速率降低尤为明显，表明脱氢过程对温度更为敏感。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth,height=0.82\textheight,keepaspectratio]{figures/figure-08.png}
+\caption{Mg-\textit{x}La-4Ni合金在340、320、300和280 ℃下的8 h吸氢动力学曲线：(a) 2La；(b) 4La；(c) 8La；(d) 12La}
+\label{fig:8}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth,height=0.82\textheight,keepaspectratio]{figures/figure-09.png}
+\caption{Mg-\textit{x}La-4Ni合金在340、320、300和280 ℃下的30 min放氢动力学曲线：(a) 2La；(b) 4La；(c) 8La；(d) 12La}
+\label{fig:9}
+\end{figure}
+
+为避免将动力学曲线的展示时长与容量统计时长混淆，下述容量及图~\ref{fig:11}中的容量数据均取340 ℃下8 h吸氢（3 MPa）和8 h放氢（0.1 MPa）的终值。La含量对可利用储氢容量的影响呈非单调变化：2La合金的吸、放氢量最高，分别为6.40和5.99 wt.\%；4La合金降至5.69和5.43 wt.\%；8La合金进一步降至5.41和5.09 wt.\%，为四种合金中的最低值。当La含量增至12 wt.\%时，吸、放氢量分别回升至6.34和5.88 wt.\%，接近2La合金水平。
+
+采用Johnson–Mehl–Avrami–Kolmogorov（JMAK）模型\cite{ref25}描述放氢反应分数随时间的演化。在α为0.2～0.8的统一反应分数区间内，ln[−ln(1−α)]与ln t整体呈线性关系；由于不同温度达到相同反应分数所需时间不同，各拟合线采用相同的纵坐标范围，而对应的ln t范围不同。根据式~\eqref{eq:jmak}，线性拟合斜率为η，截距为η ln k，并由ln k = 截距/η获得各温度的动力学参数。随后以ln k对1000/(RT)进行Arrhenius拟合，并由斜率计算表观脱氢活化能。所采用的JMAK方程和Arrhenius方程分别见式~\eqref{eq:jmak}和式~\eqref{eq:arrhenius}。鉴于各成分仅进行一次等温测试，拟合参数和活化能不作统计显著性判断，主要用于比较La含量变化下的相对趋势。
+
+\begin{equation}\ln[-\ln(1-\alpha)]=\eta\ln k+\eta\ln t\label{eq:jmak}\end{equation}
+
+\begin{equation}\ln k=\ln A-\frac{E_a}{RT}\label{eq:arrhenius}\end{equation}
+
+JMAK重新拟合及Arrhenius拟合参数汇总于表~\ref{tab:5}。各温度线性拟合的决定系数R$^2$为0.99782～1.00000，η为0.8005～1.1122，ln k为−6.5883～−4.0588；在各组合金中，ln k均随温度升高而增大，表明升温可提高脱氢反应速率。进一步进行Arrhenius分析（图~\ref{fig:10}），2La、4La、8La和12La合金的表观脱氢活化能分别为103.9、99.1、96.8和81.8 kJ·mol$^{-1}$，Arrhenius拟合决定系数R$^2$分别为0.97078、0.97563、0.96660和0.99679。这些参数用于同一测试和拟合流程下不同成分之间的比较。
+
+\begin{table}[htbp]
+\centering
+\caption{Mg-\textit{x}La-4Ni合金在$\alpha=0.2$--$0.8$区间内的JMAK与Arrhenius拟合参数}
+\label{tab:5}
+\begingroup
+\fontsize{9.5}{12}\selectfont
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.06}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+合金 & 温度/℃ & $\eta$ & $\ln k$ & JMAK $R^2$ & Arrhenius $R^2$ & $E_a$/(kJ mol$^{-1}$) \\
+\midrule
+Mg-2La-4Ni & 340 & 1.0267 & -4.3609 & 0.99824 & 0.97078 & 103.9 \\
+ & 320 & 1.0044 & -4.8211 & 0.99782 &  &  \\
+ & 300 & 0.9637 & -5.4690 & 0.99859 &  &  \\
+ & 280 & 0.8005 & -6.5883 & 0.99997 &  &  \\
+Mg-4La-4Ni & 340 & 1.1009 & -4.1326 & 0.99865 & 0.97563 & 99.1 \\
+ & 320 & 1.0983 & -4.5703 & 0.99866 &  &  \\
+ & 300 & 1.0826 & -5.2210 & 0.99921 &  &  \\
+ & 280 & 1.0161 & -6.2469 & 0.99992 &  &  \\
+Mg-8La-4Ni & 340 & 1.1007 & -4.2971 & 0.99782 & 0.96660 & 96.8 \\
+ & 320 & 1.1122 & -4.6931 & 0.99829 &  &  \\
+ & 300 & 1.0947 & -5.3123 & 0.99900 &  &  \\
+ & 280 & 0.9074 & -6.3656 & 0.99976 &  &  \\
+Mg-12La-4Ni & 340 & 1.0578 & -4.0588 & 0.99888 & 0.99679 & 81.8 \\
+ & 320 & 1.0775 & -4.5039 & 0.99942 &  &  \\
+ & 300 & 1.0905 & -5.1645 & 0.99980 &  &  \\
+ & 280 & 1.1000 & -5.7711 & 0.99988 &  &  \\
+\bottomrule
+\end{tabular}
+\endgroup
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth,height=0.82\textheight,keepaspectratio]{figures/figure-10.png}
+\caption{Mg-\textit{x}La-4Ni合金放氢动力学的JMAK线性拟合及Arrhenius拟合结果（反应分数$\alpha=0.2$--$0.8$）：(a、b) 2La；(c、d) 4La；(e、f) 8La；(g、h) 12La}
+\label{fig:10}
+\end{figure}
+
+因此，La含量对Mg-\textit{x}La-4Ni合金的容量和动力学呈现不同的响应规律（图~\ref{fig:11}）：8 h吸、放氢容量在8La处最低、在12La处回升，而所得表观脱氢活化能随La含量增加总体降低。该结果表明，可利用容量不能仅由表观反应能垒解释，还受到主储氢相比例、各第二相自身的储氢贡献和组织均匀性的共同影响。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth,height=0.82\textheight,keepaspectratio]{figures/figure-11.png}
+\caption{Mg-\textit{x}La-4Ni合金在340 ℃下的8 h吸氢量、8 h放氢量和表观脱氢活化能随La含量的变化}
+\label{fig:11}
+\end{figure}
+
+\subsection{第一性原理计算与界面作用}
+
+实验结果显示，不同成分合金的反应焓变变化有限，而表观脱氢活化能存在差异。第一性原理计算不用于重现La含量变化对应的实验趋势或建立定量映射，而是用于识别Mg$_{\mathrm{2}}$Ni、LaH$_{\mathrm{3}}$和Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$相关界面可能影响的局部基元反应。为此，构建Mg/LaH$_{\mathrm{3}}$、Mg/Mg$_{\mathrm{2}}$Ni、Mg/Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$、MgH$_{\mathrm{2}}$/LaH$_{\mathrm{3}}$、MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$和MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$Ni界面模型。图~\ref{fig:12}汇总展示上述六种界面及纯MgH$_{\mathrm{2}}$体相对照共七种计算结构；氢化后XRD中Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$和LaH$_{\mathrm{3}}$的出现，为氢化物相关模型的选择提供了物相依据。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth,height=0.82\textheight,keepaspectratio]{figures/figure-12.png}
+\caption{七种计算模型的结构示意图：（a）Mg/LaH$_3$界面；（b）Mg/Mg$_2$Ni界面；（c）Mg/Mg$_2$NiH$_4$界面；（d）MgH$_2$/LaH$_3$界面；（e）MgH$_2$/Mg$_2$NiH$_4$界面；（f）MgH$_2$/Mg$_2$Ni界面；（g）纯MgH$_2$体相模型}
+\label{fig:12}
+\end{figure}
+
+\subsubsection{\texorpdfstring{H$_{2}$}{H2}解离吸附能量差}
+
+H$_{\mathrm{2}}$在Mg/LaH$_{\mathrm{3}}$、Mg/Mg$_{\mathrm{2}}$Ni和Mg/Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$界面或相关构型上由分子吸附态转变为解离吸附态的能量差分别为−0.116、−0.945和−0.720 eV。三个数值均为负，说明在所选初、终态下解离吸附态在热力学上更稳定。Mg/Mg$_{\mathrm{2}}$Ni的能量降低幅度最大，其次为Mg/Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$，Mg/LaH$_{\mathrm{3}}$最小，表明Mg$_{\mathrm{2}}$Ni相关区域对稳定解离H具有较强的热力学驱动力。需要强调的是，该结果反映初、终态能量差，而非H$_{\mathrm{2}}$解离活化能垒，因此只能支持Mg$_{\mathrm{2}}$Ni相关界面具有潜在H$_{\mathrm{2}}$活化能力。
+
+\subsubsection{H空位形成能}
+
+为比较界面对MgH$_{\mathrm{2}}$中H脱出的影响，计算MgH$_{\mathrm{2}}$/LaH$_{\mathrm{3}}$和MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$模型中界面附近与远离界面位置的H空位形成能。H空位形成能按下式计算：
+
+\begin{equation}E_{\mathrm{vac}}=E_{\mathrm{defect}}+\frac{1}{2}E_{\mathrm{H}_2}-E_{\mathrm{perfect}}\label{eq:vacancy}\end{equation}
+
+式中，\textit{E}$_{\mathrm{defect}}$为含单个H空位的缺陷结构总能量，\textit{E}$_{\mathrm{perfect}}$为对应完整结构的总能量，$E_{\mathrm{H}_2}$为孤立H$_{\mathrm{2}}$分子的总能量，\textit{E}$_{\mathrm{vac}}$为H空位形成能。\textit{E}$_{\mathrm{vac}}$越低，表示从相应位置移除H原子并形成空位所需的能量代价越小。
+
+对于MgH$_{\mathrm{2}}$/LaH$_{\mathrm{3}}$界面，界面附近和远离界面的H空位形成能分别为1.101和1.446 eV，降低0.345 eV。对于MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$界面，对应数值分别为0.631和1.181 eV，降低0.550 eV。两种界面均降低了附近H原子脱出的能量代价，且MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$界面的降低幅度更大，说明在所考察构型中，该界面对MgH$_{\mathrm{2}}$分解具有更强的局部热力学促进潜力。
+
+\subsubsection{界面Mg-H键长变化}
+
+MgH$_{\mathrm{2}}$/LaH$_{\mathrm{3}}$界面附近和远离界面区域的Mg-H平均键长分别为2.039和1.928 Å，界面处增加0.111 Å。MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$模型中的对应数值为2.033和1.910 Å，增加0.123 Å。Mg-H键拉长表明界面诱导的局部配位畸变削弱了Mg-H相互作用。MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$界面产生的键长增量略大，与其更低的界面H空位形成能相一致。
+
+\begin{figure}[htbp]
+\makeatletter\def\@captype{table}\makeatother
+\centering
+\caption{不同界面模型的H$_2$解离吸附能量差、H空位形成能、Mg--H键长及H迁移能垒}
+\label{tab:6}
+\begingroup
+\fontsize{9.5}{12}\selectfont
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llll@{}}
+\toprule
+体系/模型 & 计算对象 & 结果 & 含义 \\
+\midrule
+Mg/LaH$_3$界面 & H$_2$解离吸附能量差 & $-0.116$ eV & 解离态能量较低 \\
+Mg/Mg$_2$Ni界面 & H$_2$解离吸附能量差 & $-0.945$ eV & 三种构型中降幅最大 \\
+Mg/Mg$_2$NiH$_4$界面 & H$_2$解离吸附能量差 & $-0.720$ eV & 解离态能量较低 \\
+MgH$_2$/LaH$_3$界面 & 界面/远端H空位形成能 & 1.101/1.446 eV & 界面处降低0.345 eV \\
+MgH$_2$/Mg$_2$NiH$_4$界面 & 界面/远端H空位形成能 & 0.631/1.181 eV & 界面处降低0.550 eV \\
+MgH$_2$/LaH$_3$界面 & 界面/远端Mg--H平均键长 & 2.039/1.928 Å & 界面处增加0.111 Å \\
+MgH$_2$/Mg$_2$NiH$_4$界面 & 界面/远端Mg--H平均键长 & 2.033/1.910 Å & 界面处增加0.123 Å \\
+纯MgH$_2$ & H迁移能垒 & 0.655 eV & 体相对照路径 \\
+MgH$_2$/LaH$_3$界面 & H迁移能垒 & 0.445 eV & 低于体相对照 \\
+MgH$_2$/Mg$_2$NiH$_4$界面 & H迁移能垒 & 1.074 eV & 高于体相对照 \\
+MgH$_2$/Mg$_2$Ni界面 & H迁移能垒 & 0.108 eV & 低正向能垒、稳定终态  \\
+\bottomrule
+\end{tabular*}
+\endgroup
+\end{figure}
+
+\subsubsection{H迁移能垒}
+
+不同模型所选H迁移过程的初态（IS）、过渡态（TS）和终态（FS）离散能级见图~\ref{fig:13}，虚线仅用于连接三个状态，不代表全部NEB镜像的连续能量曲线。CI-NEB计算得到纯MgH$_{\mathrm{2}}$、MgH$_{\mathrm{2}}$/LaH$_{\mathrm{3}}$、MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$和MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$Ni所选路径的正向H迁移能垒分别为0.655、0.445、1.074和0.108 eV。LaH$_{\mathrm{3}}$界面使正向能垒较纯MgH$_{\mathrm{2}}$降低0.210 eV（约32.1\%），Mg$_{\mathrm{2}}$Ni界面所选路径的正向能垒为0.108 eV。结合终态相对能计算，MgH$_{\mathrm{2}}$/LaH$_{\mathrm{3}}$、MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$和MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$Ni路径的反向能垒分别为0.266、0.837和0.555 eV。上述结果表明，LaH$_{\mathrm{3}}$和Mg$_{\mathrm{2}}$Ni界面可在特定迁移路径上降低正向迁移阻力，而Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$界面所选路径并不具有同样优势。
+
+从终态相对能可以进一步比较迁移后H的相对稳定性。MgH$_{\mathrm{2}}$/LaH$_{\mathrm{3}}$路径的终态比初态高0.179 eV，说明该构型主要降低迁移过渡态能量，对终态的稳定作用有限；MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$Ni路径的终态比初态低0.447 eV，表明所选Mg$_{\mathrm{2}}$Ni界面路径兼具较低正向能垒和较稳定终态。相比之下，MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$所选路径的终态相对能为0.237 eV，正向能垒为1.074 eV，说明Mg$_{\mathrm{2}}$Ni的氢化状态和具体迁移路径会显著改变界面势能面。由于不同模型的晶面和局部配位并不完全相同，上述数值用于比较所选路径，不代表所有可能界面构型。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth,height=0.82\textheight,keepaspectratio]{figures/figure-13.png}
+\caption{不同体系中H迁移过程的IS、TS和FS三点相对能级示意图（虚线仅用于连接离散状态）}
+\label{fig:13}
+\end{figure}
+
+\subsubsection{不同界面对基元反应的局部作用}
+
+四类计算结果表明，不同第二相相关界面对所考察基元步骤具有不同的局部作用。Mg$_{\mathrm{2}}$Ni相关界面对解离H具有较强的热力学稳定作用，可能增加吸氢初期的原子H供应；LaH$_{\mathrm{3}}$和Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$相关界面通过拉长Mg-H键并降低H空位形成能，可能削弱界面附近H的局部束缚；CI-NEB结果进一步显示，LaH$_{\mathrm{3}}$可降低所选MgH$_{\mathrm{2}}$近界面路径的H迁移过渡态，而Mg$_{\mathrm{2}}$Ni所选路径兼具较低正向能垒和较稳定终态。
+
+上述结果说明，不同界面可能作用于不同基元步骤，但各能量均对应特定理想构型，不能直接等同于多步骤共同控制的实验表观活化能。实验结果与计算结果之间的联系将在第4节讨论。
+
+\section{讨论}
+
+实验结果表明，La含量变化未改变合金的基本物相类型，但改变了第二相的形貌和空间分布，并伴随可利用储氢容量和表观脱氢活化能的差异。因此，La含量的作用可能不仅体现为主体反应热力学变化，也与第二相比例、分布均匀性及其界面环境有关。基于这一实验观察，第一性原理计算进一步从理想界面模型出发，识别不同第二相相关界面可能影响的局部H反应步骤。计算模型不对应某一特定La含量合金的完整真实组织，也不用于建立La含量与计算能量或实验活化能之间的定量映射；其作用是为实验观察提供候选微观解释。下文分别从第二相分布均匀性、主体反应热力学基线和界面基元反应机制三个层面展开讨论。
+
+\subsection{第二相分布均匀性与可利用储氢容量}
+
+XRD表明各合金的基本物相类型保持不变，而SEM和EDS结果显示第二相形貌及分布均匀性随La含量发生明显变化。2La合金中的第二相主要沿枝晶间形成较细密的网络；4La合金中块状区域增多；8La合金出现较显著的局部偏聚和粗化；12La合金中的第二相分布更连续且相对均匀。由于不同灰度区域可能包含成分相近或相互交织的富La、富Ni组织，本文不根据二维SEM图像对各物相含量进行定量。
+
+铸态XRD中Mg$_{\mathrm{17}}$La$_{\mathrm{2}}$特征峰随La含量增加而增强，说明富La金属间化合物的析出倾向提高。各样品中均可识别Mg$_{\mathrm{2}}$Ni峰。EDS面分布显示La和Ni主要富集于枝晶间或晶界附近，但元素面分布不能替代物相定量，因此本文仅讨论第二相的形貌与分布特征。
+
+从化学计量储氢容量看，第二相并非完全惰性，但其理论氢质量分数低于MgH$_{\mathrm{2}}$。按完全氢化物质量估算，MgH$_{\mathrm{2}}$、Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$和LaH$_{\mathrm{3}}$的理论储氢容量分别约为7.66、3.62和2.13 wt.\%；若Mg$_{\mathrm{17}}$La$_{\mathrm{2}}$按Mg$_{\mathrm{17}}$La$_{\mathrm{2}}$ + 20H$_{\mathrm{2}}$ → 17MgH$_{\mathrm{2}}$ + 2LaH$_{\mathrm{3}}$完全转化，其复合氢化产物的理论储氢容量约为5.51 wt.\%。因此，Mg$_{\mathrm{2}}$Ni和富La相能够贡献部分储氢量，但其增加同时降低高容量α-Mg的相对比例，两方面共同构成容量变化的质量平衡。
+
+实验中，12La合金的第二相分布较2La更连续，但其8 h吸氢容量仍由2La的6.40 wt.\%仅小幅降至6.34 wt.\%。这一现象说明容量变化不能简单依据SEM中第二相的表观多少判断，还应同时考虑Mg$_{\mathrm{2}}$Ni和富La相自身的储氢贡献、剩余α-Mg基体的反应利用率以及第二相分布均匀性。
+
+组织形貌进一步影响不同相的储氢贡献能否充分发挥。8La合金中第二相的局部偏聚和粗化可能减少有效反应界面并延长氢输运路径，使其8 h吸、放氢容量最低；12La合金中的第二相分布更连续且相对均匀，可能有利于第二相及周围α-Mg基体的反应利用。因此，12La容量回升更适合解释为第二相储氢贡献、α-Mg容量贡献和组织分布均匀性共同作用的结果，而非主要归因于单一界面机制。
+
+\subsection{主体反应热力学基线与界面路径优化}
+
+PCT和van’t Hoff分析表明，各合金的吸氢焓变绝对值为70.57–74.16 kJ·mol$^{-1}$，放氢焓变为72.54–74.87 kJ·mol$^{-1}$，且氢化产物均以MgH$_{\mathrm{2}}$为主并伴随Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$和LaH$_{\mathrm{3}}$。这些结果表明，Mg/MgH$_{\mathrm{2}}$反应仍决定体系的平衡热力学基线，La含量变化主要引起局部相组成和氢占位环境的小幅调整，而没有改变主导可逆反应。4La合金虽具有本系列中最大的吸、放氢焓变，但相对2La合金仅增加3.59和2.33 kJ·mol$^{-1}$，不足以单独解释表观脱氢活化能约22.1 kJ·mol$^{-1}$的变化。
+
+实验所得表观脱氢活化能反映多步骤共同控制下的整体动力学，不应与任一单独计算能量直接等同。第一性原理结果仅用于识别可能的界面基元反应机制：Mg$_{\mathrm{2}}$Ni相关区域可稳定解离H，LaH$_{\mathrm{3}}$和Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$相关界面可降低局部H空位形成能并拉长Mg-H键，而LaH$_{\mathrm{3}}$和Mg$_{\mathrm{2}}$Ni所选路径可降低H迁移能垒。具体解离吸附能量差、H空位形成能、Mg-H键长及H迁移能垒见表~\ref{tab:6}。
+
+综合来看，本体系的可利用容量主要受α-Mg基体容量贡献、第二相自身储氢贡献、第二相偏聚程度和各相反应利用率共同约束。第一性原理计算提供了不同界面可能参与H$_{\mathrm{2}}$活化、H脱出和H迁移等基元过程的微观图景，但不用于推导La含量变化下的界面数量，也不与实验表观活化能建立定量对应。12La合金兼具较高容量和较低表观活化能的实验现象仍可能受到第二相分布均匀性、颗粒尺寸、缺陷密度、表面氧化和未反应Mg比例等因素影响。
+
+本文在统一测试和拟合条件下比较了不同La含量合金的储氢行为，并通过所选界面模型分析可能的局部反应路径。实验结果用于判断成分间的相对变化，计算结果用于比较特定构型的能量趋势。后续将结合循环性能、物相定量和界面结构表征，进一步明确各相贡献及界面作用与宏观储氢性能之间的联系。
+
+\section{结论}
+
+本文研究了La含量对Mg-xLa-4Ni合金物相、组织和储氢行为的影响，并结合第一性原理计算分析第二相界面的可能作用，主要结论如下：
+
+（1）Mg-xLa-4Ni合金均由α-Mg、Mg$_{\mathrm{2}}$Ni和Mg$_{\mathrm{17}}$La$_{\mathrm{2}}$相组成。La增加未改变基本物相类型，但显著改变第二相形貌与空间分布：2La合金中的第二相主要沿枝晶间呈细密网络状分布，8La合金中局部偏聚和粗化较为明显，12La合金中的第二相分布更连续且相对均匀。
+
+（2）在340 ℃下，8 h吸氢（3 MPa）和8 h放氢（0.1 MPa）容量随La含量增加先降低后回升。2La合金的吸、放氢量分别为6.40和5.99 wt.\%，8La合金降至5.41和5.09 wt.\%，12La合金回升至6.34和5.88 wt.\%。该变化可能与α-Mg容量稀释、第二相自身储氢贡献及组织分布差异共同有关；界面作用可能参与其中，但现有结果尚不能区分各因素的定量贡献。
+
+（3）各合金的吸氢焓变绝对值为70.57–74.16 kJ·mol$^{-1}$，放氢焓变为72.54–74.87 kJ·mol$^{-1}$，表明Mg/MgH$_{\mathrm{2}}$主体反应的热力学基线变化有限。实验所得表观脱氢活化能分别为103.9、99.1、96.8和81.8 kJ·mol$^{-1}$，反映不同成分合金整体脱氢动力学存在差异，但不能由单一界面计算量直接解释。
+
+（4）第一性原理计算表明，Mg/Mg$_{\mathrm{2}}$Ni相关构型的H$_{\mathrm{2}}$解离吸附能量差为−0.945 eV；MgH$_{\mathrm{2}}$/LaH$_{\mathrm{3}}$和MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$NiH$_{\mathrm{4}}$界面分别使H空位形成能降低0.345和0.550 eV，并使Mg-H平均键长增加0.111和0.123 Å。CI-NEB结果显示，纯MgH$_{\mathrm{2}}$、MgH$_{\mathrm{2}}$/LaH$_{\mathrm{3}}$和MgH$_{\mathrm{2}}$/Mg$_{\mathrm{2}}$Ni所选路径的正向H迁移能垒分别为0.655、0.445和0.108 eV。这些结果支持LaH$_{\mathrm{3}}$和Mg$_{\mathrm{2}}$Ni相关界面在H活化、脱出和迁移步骤中具有互补作用的可能性，但其与宏观动力学的定量对应仍需更多界面构型验证。
+\clearpage
+\section*{CRediT作者贡献声明}
+【待作者补充】
+\section*{利益冲突声明}
+【待作者确认】
+\section*{数据可用性声明}
+【待作者补充】
+\section*{致谢与基金}
+【待作者补充】
+\bibliographystyle{elsarticle-num}
+\bibliography{bib/references}
+\end{document}

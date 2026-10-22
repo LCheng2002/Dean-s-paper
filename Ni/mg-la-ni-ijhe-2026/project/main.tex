@@ -1,0 +1,240 @@
+\documentclass[preprint,12pt]{elsarticle}
+\usepackage{amsmath,amssymb,booktabs,graphicx}
+\usepackage[hidelinks]{hyperref}
+\biboptions{sort&compress}
+\journal{International Journal of Hydrogen Energy}
+
+\begin{document}
+\begin{frontmatter}
+\title{Effect of Ni content on the microstructure and hydrogen storage properties of as-cast Mg-8La-$x$Ni alloys}
+\author[aff1]{Author names to be completed\corref{cor1}}
+\ead{Corresponding author email to be completed}
+\cortext[cor1]{Corresponding author.}
+\affiliation[aff1]{organization={Institution to be completed}, city={City}, postcode={Postcode}, country={China}}
+
+\begin{abstract}
+To clarify the effect of Ni content on the microstructure and hydrogen storage properties of Mg-8La alloys, as-cast Mg-8La-$x$Ni ($x=0$, 1, 2, 4, and 8 wt.\%) alloys were prepared by melting and characterized by X-ray diffraction (XRD), scanning electron microscopy and energy-dispersive spectroscopy (SEM/EDS), pressure-composition-temperature measurements, isothermal kinetics, and differential scanning calorimetry (DSC). The Ni-free Mg-8La alloy consisted mainly of an Mg matrix and Mg$_{17}$La$_2$. Mg$_2$Ni diffraction peaks were indistinct in the 1Ni sample but were clearly observed in the 2Ni, 4Ni, and 8Ni samples. With increasing Ni content, the La-rich second-phase regions generally exhibited local coarsening and reduced continuity. Mg$_2$NiH$_4$ was detected in the hydrogenated Ni-containing alloys. Van't Hoff analysis showed no systematic variation in the absorption or desorption enthalpy with Ni content, suggesting that the principal thermodynamic contribution of the measured plateau remained associated with the Mg/MgH$_2$ equilibrium. Arrhenius fitting yielded apparent dehydrogenation activation energies of 158.8, 129.3, 108.4, 96.8, and 90.2 kJ mol$^{-1}$ for Mg-8La, Mg-8La-1Ni, Mg-8La-2Ni, Mg-8La-4Ni, and Mg-8La-8Ni, respectively. At 340~$^{\circ}$C, the corresponding $t_{90}$ values were approximately 18, 3, 3, 2, and 2 min, and the DSC dehydrogenation peak temperatures were 451, 440, 439, 413, and 404~$^{\circ}$C. Increasing Ni content therefore accelerated the overall dehydrogenation response while exerting only a limited influence on the apparent equilibrium thermodynamic parameters.
+\end{abstract}
+\begin{keyword}
+solid-state hydrogen storage \sep Mg--rare-earth alloy \sep microstructure \sep thermodynamics \sep kinetics
+\end{keyword}
+\end{frontmatter}
+
+% Preserve the reference numbering of the Chinese source manuscript.
+\nocite{ref1,ref2,ref3,ref4,ref5,ref6,ref7,ref8,ref9,ref10,ref11,ref12,ref13,ref14,ref15,ref16,ref17,ref18,ref19,ref20}
+
+\section{Introduction}
+Hydrogen is a clean and efficient energy carrier with considerable potential for supporting carbon-neutral energy systems \cite{ref1}. Hydrogen storage is a critical step in hydrogen utilization, and its performance directly affects the safety and economics of hydrogen-energy systems. Compared with gaseous and liquid storage, solid-state hydrogen storage offers high volumetric storage density, safety, and stability and has therefore become an important research direction \cite{ref2}. Mg-based hydrogen storage alloys are regarded as promising solid-state storage materials because of their high theoretical hydrogen capacity (7.60 wt.\%), abundant resources, and low cost \cite{ref3}. Their practical application nevertheless remains constrained by high thermodynamic stability, sluggish hydrogen absorption and desorption kinetics, and poor cycling stability \cite{ref4}. Alloying is commonly used to improve their overall performance \cite{ref5,ref6,ref7}. Introducing additional elements can modify the crystal structure and electronic characteristics, thereby lowering the dehydrogenation temperature and improving reaction kinetics and cycling stability.
+
+The rare-earth element La readily forms stable LaH$_x$ phases with hydrogen. Thermodynamic assessment of the La--Mg binary system indicates the presence of La--Mg intermetallic compounds such as Mg$_{17}$La$_2$ in the Mg-rich composition range \cite{ref8}. Mg$_3$La has been reported to provide a reversible hydrogen storage capacity of approximately 2.89 wt.\% \cite{ref9}, while La$_2$Mg$_{17}$ can absorb approximately 10 hydrogen atoms at room temperature and 0.5 MPa, corresponding to a capacity of approximately 1.44 wt.\% \cite{ref10}. These findings indicate that Mg--La alloys have potential for hydrogen storage. Stable LaH$_x$ ($x=2$ or 3) nanophases can form after hydrogenation of Mg--Ni--La alloys. During cycling, these phases can remain relatively uniformly distributed with Mg$_2$Ni, help stabilize the particle microstructure, and suppress sintering \cite{ref11}. LaH$_x$ may also provide active sites and interfacial pathways for hydrogen dissociation, Mg/MgH$_2$ nucleation, and hydrogen diffusion, thereby improving hydrogen absorption and desorption kinetics \cite{ref11,ref12}.
+
+Ni can be introduced as a third component into Mg--La binary alloys to improve their hydrogen sorption kinetics. Ni reacts with Mg to form Mg$_2$Ni, and the Mg$_2$NiH$_4$ formed during hydrogenation, together with multiphase interfaces with the Mg matrix, can facilitate hydrogen dissociation, diffusion, and nucleation \cite{ref11,ref12}. Zhang et al. \cite{ref7} prepared nanocrystalline and amorphous Mg-5Ni-3La (at.\%) alloys by melt spinning and compared them with an as-cast alloy. Their results showed that the refined microstructure produced by rapid solidification improved the hydrogen sorption kinetics of this composition. The Mg-3.8Ni-1.8La (wt.\%) alloy prepared by Ding et al. \cite{ref12} absorbed more than 7.00 wt.\% hydrogen within 2 h at 325~$^{\circ}$C and 3 MPa and retained an uptake above 5.00 wt.\% within 2 h at 175~$^{\circ}$C and 1 MPa. Most closely related to the present work, Lv et al. \cite{ref15} studied Mg-$x$Ni-3La ($x=5$, 10, 15, and 20 at.\%) alloys and found that the sample containing 5 at.\% Ni showed favorable overall hydrogen storage performance, indicating that performance did not improve monotonically with Ni content. That study fixed the La content at 3 at.\% and examined 5--20 at.\% Ni; the effects of varying Ni from 0 to 8 wt.\% at a fixed La content of 8 wt.\% on phase constitution and hydrogen sorption kinetics have not been systematically compared.
+
+Here, five compositions containing 0, 1, 2, 4, and 8 wt.\% Ni at a fixed La content of 8 wt.\% were evaluated under identical preparation and testing conditions. The as-cast microstructure, apparent PCT thermodynamic parameters, $t_{90}$/JMAK dehydrogenation kinetics, and DSC response were jointly compared. This design enables the relationships among Ni content, Mg$_2$Ni/Mg$_2$NiH$_4$-related phases, apparent plateau thermodynamics, and hydrogen sorption kinetics to be distinguished, providing experimental guidance for compositional design. The associated microscopic pathways require direct interfacial and in situ characterization for confirmation.
+
+\section{Materials and methods}
+\subsection{Alloy preparation}
+Five alloys were prepared by melting and casting; their nominal compositions are listed in Table~\ref{tab:1}. Before melting, pure Mg, Mg-90La master alloy, and Mg-30Ni master alloy were preheated at 200~$^{\circ}$C for at least 3 h. Pure Mg was melted in a crucible under a protective gas mixture containing 0.1 vol.\% SF$_6$ and 99.9 vol.\% CO$_2$. When the melt reached 730--760~$^{\circ}$C, the preheated Mg--La and Mg--Ni master alloys were added according to the nominal compositions. After complete melting, the melt was stirred and the surface dross was removed. The temperature was then adjusted to 700--720~$^{\circ}$C and held for 15--20 min. The melt was cooled to 680--700~$^{\circ}$C and poured into a mold to produce alloy ingots. Samples cut from the ingots were machined, crushed, and sieved through an 80-mesh screen to obtain alloy powders with particle sizes below approximately 180~$\mu$m. Actual compositions were measured using an iCAP 7600 inductively coupled plasma optical emission spectrometer (Thermo Fisher Scientific, USA), as listed in Table~\ref{tab:2}.
+
+\begin{table}[htbp]\centering
+\caption{Nominal compositions of the five alloys.}\label{tab:1}
+\begin{tabular}{lccc}\toprule
+Alloy & Mg (wt.\%) & La (wt.\%) & Ni (wt.\%) \\\midrule
+Mg-8La & 92 & 8 & 0 \\
+Mg-8La-1Ni & 91 & 8 & 1 \\
+Mg-8La-2Ni & 90 & 8 & 2 \\
+Mg-8La-4Ni & 88 & 8 & 4 \\
+Mg-8La-8Ni & 84 & 8 & 8 \\\bottomrule
+\end{tabular}\end{table}
+
+\begin{table}[htbp]\centering
+\caption{Measured compositions of the five alloys determined by ICP analysis.}\label{tab:2}
+\begin{tabular}{lccc}\toprule
+Alloy & Mg (wt.\%) & La (wt.\%) & Ni (wt.\%) \\\midrule
+Mg-8La & $92.20\pm0.53$ & $7.77\pm0.02$ & 0 \\
+Mg-8La-1Ni & $91.83\pm0.68$ & $7.94\pm0.06$ & $1.03\pm0.01$ \\
+Mg-8La-2Ni & $90.78\pm0.78$ & $7.86\pm0.07$ & $1.95\pm0.01$ \\
+Mg-8La-4Ni & $88.73\pm0.23$ & $7.78\pm0.04$ & $3.79\pm0.01$ \\
+Mg-8La-8Ni & $84.22\pm0.82$ & $7.85\pm0.05$ & $7.91\pm0.03$ \\\bottomrule
+\end{tabular}\end{table}
+
+\subsection{Microstructural characterization}
+Phase constitution was analyzed using a D8 ADVANCE Da Vinci multifunctional X-ray diffractometer (Bruker, Germany) with a Cu-target X-ray source and ceramic X-ray tube. Patterns were collected over $20^{\circ}$--$60^{\circ}$ at a scanning rate of $1^{\circ}$ min$^{-1}$. Jade 6.0 was used for phase analysis and peak matching, providing qualitative identification of the principal phases. Microstructure and second-phase distributions were examined with the SEM module of a Helios 5 UX focused ion beam/electron beam dual-beam microscope (Thermo Fisher Scientific, USA) in backscattered-electron mode at 10 kV and 1.4 nA. Elemental distributions were analyzed using an Oxford AZtecLive Ultim MAX100 energy-dispersive X-ray spectrometer. As-cast specimens were hot mounted, ground, and polished. Powder specimens were dispersed onto conductive adhesive with a cotton swab, and loose powder was removed with an air gun to obtain a relatively uniform particle distribution.
+
+\subsection{Hydrogen storage measurements}
+Hydrogen storage testing included activation, absorption/desorption thermodynamics, and absorption/desorption kinetics. All measurements were performed with an HPSA-auto high-pressure volumetric hydrogen storage apparatus using approximately 0.3 g of sample. Before testing, each alloy was fully activated at 340~$^{\circ}$C through five complete absorption/desorption cycles, each consisting of 8 h of hydrogen absorption and 8 h of desorption. Samples for hydrogenated-state XRD and DSC were obtained from fully activated powders hydrogenated for 8 h at 340~$^{\circ}$C under 3.1 MPa H$_2$. Before each measurement, the sample was evacuated at 340~$^{\circ}$C for 1 h to ensure complete desorption. Absorption and desorption PCT curves were then measured at 340, 320, and 300~$^{\circ}$C. Kinetic measurements were conducted at 340, 320, 300, and 280~$^{\circ}$C under an absorption pressure of 3 MPa and a desorption back pressure of 0.1 MPa, with each run lasting 8 h. PCT and kinetic data represent single measurements; small differences among samples were therefore not subjected to statistical significance testing. To emphasize initial rate differences, the first 1 h of each absorption curve is shown. For desorption, the first 180 min is shown for Mg-8La and the first 30 min for the Ni-containing alloys. The capacities in Table~\ref{tab:4} are cumulative values at the end of the 8 h tests. The dehydrogenation rate was characterized by $t_{90}$, defined as the time required for the absolute cumulative hydrogen release to reach 90\% of the corresponding 8 h final desorption capacity. Linear interpolation was used when the 90\% value fell between adjacent data points.
+
+\subsection{Differential scanning calorimetry}
+The dehydrogenation behavior of the hydrogenated samples was examined by DSC using a SETARAM Themys high-temperature thermal-analysis platform (Kep Technologies, France). Approximately 60 mg of sample was placed in an alumina crucible, with an empty alumina crucible used as the reference. Measurements were performed under high-purity Ar from room temperature to 500~$^{\circ}$C at 5~$^{\circ}$C min$^{-1}$. Heat-flow changes during programmed heating were recorded to compare the dehydrogenation peak temperatures. Each DSC curve represents a single measurement, so small differences between nearby peak temperatures are described numerically without statistical inference.
+
+\section{Results and discussion}
+\subsection{Phase constitution and microstructure}
+Figure~\ref{fig:1} shows the XRD patterns of the Mg-8La-$x$Ni ($x=0$, 1, 2, 4, and 8) alloys. The Ni-free Mg-8La alloy consisted mainly of Mg with Mg$_{17}$La$_2$ as the principal second phase. Mg$_2$Ni-related peaks were indistinct in the 1Ni sample and may have been below the detection limit. Clearer Mg$_2$Ni diffraction peaks were observed in the 2Ni, 4Ni, and 8Ni samples. Their overall increase with Ni content is consistent with an increasing relative Mg$_2$Ni content, although quantitative phase analysis is needed to determine phase fractions.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figure-01.png}
+\caption{XRD patterns of Mg-8La-$x$Ni ($x=0$, 1, 2, 4, and 8) alloys.}\label{fig:1}
+\end{figure}
+
+Figure~\ref{fig:2} shows overview SEM images, and Fig.~\ref{fig:3} presents representative SEM images and EDS maps. Based on the combined XRD and EDS distributions and reports on similar Mg--La--Ni alloys \cite{ref13,ref14,ref15}, the dark region in the Ni-free alloy is assigned to the Mg matrix, while the lamellar Mg--La eutectic corresponds mainly to Mg$_{17}$La$_2$. The Ni signal in Mg-8La-1Ni was relatively weak, and Mg$_2$Ni was not clearly detected by as-cast XRD; its fine second phases are therefore not assigned uniquely. In Mg-8La-2Ni, both Mg$_2$Ni diffraction peaks and Ni enrichment in parts of the second-phase or eutectic regions support the presence of Mg$_2$Ni-related second phases. Because of the spatial resolution of EDS mapping and multiphase coexistence, the entire lamellar structure cannot be assigned uniquely to Mg$_2$Ni. Mg$_2$Ni peaks and Ni-rich regions became generally more evident in the 4Ni and 8Ni samples. The blocky or eutectic La-rich regions were mainly associated with Mg$_{17}$La$_2$, although local La--Ni co-enriched regions were not assigned to a single phase.
+
+Within these assignments, Mg$_{17}$La$_2$ in the Ni-free alloy was distributed mainly as a fine lamellar eutectic in the Mg matrix. With increasing Ni content, the Ni-rich lamellar or second-phase regions generally became more evident, whereas the La-rich regions associated with Mg$_{17}$La$_2$ developed larger white blocky or coarse lamellar morphologies, indicating local coarsening and reduced continuity. The fine second phases in the 1Ni sample remain unassigned, while the combined Mg$_2$Ni diffraction peaks and Ni-rich regions support the presence of Mg$_2$Ni-related second phases in the 2Ni, 4Ni, and 8Ni samples.
+
+Overall, Ni addition was accompanied by changes in both the as-cast morphology and second-phase constitution. Figure~\ref{fig:2} shows the overall evolution, while Fig.~\ref{fig:3} further shows the spatial distributions of Mg, La, and Ni. The assignments are based on combined XRD, EDS, and morphological evidence. Local La--Ni co-enriched regions and the fine second phases in the 1Ni sample are not uniquely assigned. These conclusions are qualitative observations from representative fields of view and require multi-field image statistics and quantitative phase analysis for further verification.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figure-02.png}
+\caption{SEM images of as-cast Mg-8La-$x$Ni alloys: (a, f) Mg-8La; (b, g) Mg-8La-1Ni; (c, h) Mg-8La-2Ni; (d, i) Mg-8La-4Ni; and (e, j) Mg-8La-8Ni.}\label{fig:2}
+\end{figure}
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figure-03.png}
+\caption{SEM images and EDS maps of as-cast Mg-8La-$x$Ni alloys. Rows from top to bottom correspond to Mg-8La, Mg-8La-1Ni, Mg-8La-2Ni, Mg-8La-4Ni, and Mg-8La-8Ni. Columns from left to right show the SEM image and Mg, La, and Ni maps; no Ni map is shown for Ni-free Mg-8La.}\label{fig:3}
+\end{figure}
+
+XRD was also used to examine phase transformations before and after hydrogen desorption (Fig.~\ref{fig:4}). The hydrogenated Mg-8La alloy contained residual Mg, MgH$_2$, and LaH$_3$, while Mg$_2$NiH$_4$ was additionally detected in the hydrogenated Ni-containing alloys. Combined with the as-cast results, the reversible hydrogenation of Mg and Mg$_2$Ni and the possible decomposition of Mg$_{17}$La$_2$ during initial activation/hydrogenation can be written as
+\begin{align}
+\mathrm{Mg}+\mathrm{H}_2 &\rightarrow \mathrm{MgH}_2, \label{eq:1}\\
+\mathrm{Mg}_2\mathrm{Ni}+2\mathrm{H}_2 &\rightarrow \mathrm{Mg}_2\mathrm{NiH}_4, \label{eq:2}\\
+\mathrm{Mg}_{17}\mathrm{La}_2+20\mathrm{H}_2 &\rightarrow 17\mathrm{MgH}_2+2\mathrm{LaH}_3. \label{eq:3}
+\end{align}
+The XRD results are consistent with decomposition of Mg$_{17}$La$_2$ into MgH$_2$ and LaH$_3$ during initial activation/hydrogenation. LaH$_3$ remained detectable after dehydrogenation, and no clear recovery of Mg$_{17}$La$_2$ was observed, indicating no detectable reconstruction under the investigated conditions. After desorption, MgH$_2$- and Mg$_2$NiH$_4$-related peaks weakened or disappeared and Mg and Mg$_2$Ni appeared. These ex situ results are consistent with reversible Mg/MgH$_2$ and Mg$_2$Ni/Mg$_2$NiH$_4$ transformations but do not directly establish an in situ pathway.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figure-04.png}
+\caption{XRD patterns of (a) hydrogenated and (b) dehydrogenated Mg-8La-$x$Ni ($x=0$, 1, 2, 4, and 8) alloys.}\label{fig:4}
+\end{figure}
+
+\subsection{Hydrogen storage thermodynamics}
+PCT curves were measured at 340, 320, and 300~$^{\circ}$C to evaluate the effect of Ni content on hydrogen storage thermodynamics. All alloys showed absorption and desorption plateaus whose pressures increased with temperature (Fig.~\ref{fig:5}). Each plateau pressure was read at the midpoint of its reversible PCT capacity (approximately 50\% conversion); linear interpolation was used when the midpoint fell between adjacent data points, and absorption and desorption plateaus were treated separately. The plateau pressures in Table~\ref{tab:3} were used with the van't Hoff equations to calculate thermodynamic parameters \cite{ref17}:
+
+\begin{subequations}\label{eq:4}
+\begin{align}
+\ln(P_{\mathrm{H}_2}/P^0) &= \frac{\Delta H_{\mathrm{abs}}}{RT}-\frac{\Delta S_{\mathrm{abs}}}{R}, \label{eq:4a}\\
+\ln(P_{\mathrm{H}_2}/P^0) &= -\frac{\Delta H_{\mathrm{des}}}{RT}+\frac{\Delta S_{\mathrm{des}}}{R}. \label{eq:4b}
+\end{align}
+\end{subequations}
+
+Here, $P_{\mathrm{H}_2}$ is the hydrogen equilibrium pressure, $P^0$ is the standard pressure ($1.01\times10^5$ Pa), $\Delta H$ and $\Delta S$ are the enthalpy and entropy changes in the corresponding reaction direction, $R$ is the gas constant, and $T$ is thermodynamic temperature. Equation~\eqref{eq:4a} describes absorption, for which $\Delta H_{\mathrm{abs}}$ and $\Delta S_{\mathrm{abs}}$ are negative; Eq.~\eqref{eq:4b} describes desorption, for which $\Delta H_{\mathrm{des}}$ and $\Delta S_{\mathrm{des}}$ are positive. Parameters calculated from the slopes and intercepts of the van't Hoff fits in Fig.~\ref{fig:5} are listed in Table~\ref{tab:3}. The absorption and desorption enthalpies remained within similar ranges and showed no strictly monotonic variation with Ni content. Ni addition therefore had a limited influence on the equilibrium thermodynamic parameters, and the system remained governed mainly by the Mg/MgH$_2$ equilibrium. Small numerical differences should not be interpreted directly as a marked reduction in thermodynamic stability. Because DSC peak temperature is also affected by heating rate and reaction kinetics, peak shifts alone cannot establish changes in equilibrium thermodynamic stability.
+
+\begin{table}[htbp]\centering
+\caption{Plateau pressures and thermodynamic parameters of Mg-8La-$x$Ni alloys.}\label{tab:3}
+\scriptsize\resizebox{\textwidth}{!}{%
+\begin{tabular}{llccccc}\toprule
+Alloy & Process & \multicolumn{3}{c}{Plateau pressure (MPa)} & $\Delta H$ (kJ mol$^{-1}$) & $\Delta S$ (J mol$^{-1}$ K$^{-1}$) \\
+\cmidrule(lr){3-5}
+ & & 340~$^{\circ}$C & 320~$^{\circ}$C & 300~$^{\circ}$C & & \\\midrule
+Mg-8La & Absorption & 0.690 & 0.423 & 0.256 & -72.41 & -134.01 \\
+ & Desorption & 0.658 & 0.397 & 0.223 & 79.13 & 144.66 \\
+Mg-8La-1Ni & Absorption & 0.675 & 0.419 & 0.248 & -73.27 & -135.28 \\
+ & Desorption & 0.664 & 0.408 & 0.243 & 73.42 & 135.37 \\
+Mg-8La-2Ni & Absorption & 0.675 & 0.418 & 0.248 & -73.15 & -135.07 \\
+ & Desorption & 0.662 & 0.408 & 0.243 & 73.20 & 134.99 \\
+Mg-8La-4Ni & Absorption & 0.653 & 0.403 & 0.238 & -73.62 & -135.58 \\
+ & Desorption & 0.640 & 0.391 & 0.231 & 74.43 & 136.72 \\
+Mg-8La-8Ni & Absorption & 0.627 & 0.394 & 0.226 & -74.71 & -137.06 \\
+ & Desorption & 0.607 & 0.370 & 0.220 & 74.11 & 135.74 \\\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figure-05.png}
+\caption{PCT curves and van't Hoff fits of Mg-8La-$x$Ni alloys at 340, 320, and 300~$^{\circ}$C: (a, b) Mg-8La; (c, d) Mg-8La-1Ni; (e, f) Mg-8La-2Ni; (g, h) Mg-8La-4Ni; and (i, j) Mg-8La-8Ni.}\label{fig:5}
+\end{figure}
+
+\subsection{Hydrogen absorption kinetics}
+Hydrogen absorption kinetic curves were measured at 340, 320, 300, and 280~$^{\circ}$C. Figure~\ref{fig:6} shows the first 1 h of each curve to compare the initial response, while Table~\ref{tab:4} lists cumulative uptake at the end of the complete 8 h tests. The PCT and kinetic tests used different procedures: the isotherms in Fig.~\ref{fig:5} were obtained by stepwise pressure changes and used primarily to determine plateau pressure, whereas Fig.~\ref{fig:6} and Table~\ref{tab:4} describe absorption under a fixed pressure and cumulative 8 h capacity. The capacities from these measurement types therefore represent their respective test conditions. The Ni-containing samples generally showed faster initial absorption responses, although variations among Ni contents were not strictly monotonic at every temperature. The 8 h capacities describe long-duration uptake and are not direct measures of the initial rate. At 340~$^{\circ}$C, Mg-8La-8Ni absorbed 5.80 wt.\% after 8 h, compared with 4.97 wt.\% for Mg-8La. Together with the as-cast results, the appearance of Mg$_2$Ni lamellae after Ni addition was associated with changes in hydrogen absorption and may affect hydrogen transport and interfacial reactions.
+
+The 2Ni sample had lower cumulative 8 h absorption and desorption capacities than the 1Ni sample at every test temperature, followed by capacity recovery for the 4Ni and 8Ni samples. Thus, Ni content and long-duration cumulative capacity were not linearly related. At 320, 300, and 280~$^{\circ}$C, the 2Ni sample nevertheless had a shorter $t_{90}$ than the 1Ni sample, while both were approximately 3 min at 340~$^{\circ}$C, showing that cumulative capacity and desorption rate did not vary in parallel. This non-monotonic response can be understood as the combined effect of capacity contributions and reaction utilization: Ni addition reduces the mass fraction of the high-capacity Mg matrix, while Mg$_2$Ni/Mg$_2$NiH$_4$-related phases and multiphase interfaces can facilitate hydrogen reactions and increase the fraction reacted within a fixed time. The relative balance of these effects is consistent with the local capacity minimum at 2Ni and subsequent recovery at 4Ni and 8Ni. Ni addition therefore affects reaction rate and cumulative 8 h capacity in different ways.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figure-06.png}
+\caption{First 1 h of the hydrogen absorption curves of Mg-8La-$x$Ni alloys at (a) 340, (b) 320, (c) 300, and (d) 280~$^{\circ}$C.}\label{fig:6}
+\end{figure}
+
+\subsection{Hydrogen desorption kinetics}
+Figure~\ref{fig:7} shows the desorption curves at 340, 320, 300, and 280~$^{\circ}$C. The first 180 min is shown for Mg-8La and the first 30 min for the Ni-containing alloys. Negative ordinate values indicate only the desorption direction; Table~\ref{tab:4} reports absolute desorbed amounts accumulated over the complete 8 h tests. All $t_{90}$ values were determined from the complete 8 h curves as the time at which the absolute cumulative release reached 90\% of the sample's final 8 h value. Linear interpolation was used between adjacent points, and values were rounded to the nearest minute. The plotted windows are used only for display and do not affect $t_{90}$. The values generally increased as temperature decreased. For Mg-8La-8Ni, they were approximately 2, 3, 6, and 24 min at 340, 320, 300, and 280~$^{\circ}$C, respectively. Mg-8La did not show an effective desorption process suitable for kinetic fitting at 280~$^{\circ}$C, so this point was excluded from its JMAK and Arrhenius analyses.
+
+The appearance of Mg$_2$Ni and formation of Mg$_2$NiH$_4$ accompanied the changes in desorption kinetics. The combined XRD, kinetic, and apparent activation-energy results suggest that these phase transformations and microstructural changes may affect hydrogen transport and dehydrogenation, but the current evidence establishes correlation only and cannot exclude contributions from particle size, activation state, pulverization, and effective reaction area. At 340~$^{\circ}$C, the $t_{90}$ of Mg-8La-8Ni was approximately 2 min, compared with approximately 18 min for Mg-8La, demonstrating a faster response under the present conditions.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figure-07-ijhe.png}
+\caption{Hydrogen desorption curves: (a) Mg-8La (first 180 min); (b) Mg-8La-1Ni, (c) Mg-8La-2Ni, (d) Mg-8La-4Ni, and (e) Mg-8La-8Ni (first 30 min). Mg-8La showed no effective desorption at 280~$^{\circ}$C.}\label{fig:7}
+\end{figure}
+
+\begin{table}[htbp]\centering
+\caption{Eight-hour hydrogen capacities and dehydrogenation kinetic parameters of Mg-8La-$x$Ni alloys.}\label{tab:4}
+\scriptsize\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccccccc}\toprule
+Alloy & $T$ ($^{\circ}$C) & Abs. (wt.\%) & Des. (wt.\%) & $t_{90}$ (min) & $\eta$ & $\ln k$ & $R^2$ & $E_{\mathrm{a}}$ (kJ mol$^{-1}$) \\\midrule
+Mg-8La & 340 & 4.97 & 4.60 & 18 & 2.160 & -6.565 & 0.99940 & 158.8 \\
+ & 320 & 4.80 & 4.50 & 46 & 2.210 & -7.569 & & \\
+ & 300 & 4.95 & 4.77 & 150 & 2.120 & -8.738 & & \\
+Mg-8La-1Ni & 340 & 5.48 & 4.89 & 3 & 1.260 & -4.660 & 0.96733 & 129.3 \\
+ & 320 & 5.09 & 4.66 & 6 & 1.320 & -5.240 & & \\
+ & 300 & 4.89 & 4.45 & 13 & 1.320 & -6.010 & & \\
+ & 280 & 4.63 & 4.26 & 67 & 1.030 & -7.440 & & \\
+Mg-8La-2Ni & 340 & 5.08 & 4.61 & 3 & 1.180 & -4.350 & 0.97961 & 108.4 \\
+ & 320 & 4.72 & 4.35 & 4 & 1.210 & -4.860 & & \\
+ & 300 & 4.50 & 4.19 & 8 & 1.200 & -5.560 & & \\
+ & 280 & 4.32 & 4.05 & 30 & 0.990 & -6.670 & & \\
+Mg-8La-4Ni & 340 & 5.41 & 5.09 & 2 & 1.100 & -4.185 & 0.98995 & 96.8 \\
+ & 320 & 5.23 & 4.87 & 4 & 1.110 & -4.661 & & \\
+ & 300 & 4.96 & 4.64 & 7 & 1.090 & -5.355 & & \\
+ & 280 & 4.69 & 4.43 & 28 & 0.910 & -6.234 & & \\
+Mg-8La-8Ni & 340 & 5.80 & 5.35 & 2 & 1.040 & -3.981 & 0.99104 & 90.2 \\
+ & 320 & 5.45 & 5.16 & 3 & 1.050 & -4.449 & & \\
+ & 300 & 5.26 & 4.96 & 6 & 1.050 & -5.072 & & \\
+ & 280 & 4.98 & 4.72 & 24 & 0.830 & -5.899 & & \\\bottomrule
+\end{tabular}}
+\end{table}
+
+The JMAK model was used to calculate rate constants, and apparent dehydrogenation activation energies were obtained with the Arrhenius equation \cite{ref17,ref18,ref19,ref20}:
+\begin{align}
+\ln[-\ln(1-\alpha)] &= \eta\ln k+\eta\ln t, \label{eq:5}\\
+\ln k &= -\frac{E_{\mathrm{a}}}{RT}+\ln A. \label{eq:6}
+\end{align}
+Here, $t$ is reaction time, expressed in seconds for all JMAK calculations; $k$ is the rate constant in s$^{-1}$; $\alpha$ is the fraction dehydrogenated at time $t$; $\eta$ is the Avrami exponent; $R$ is the gas constant (8.314 J mol$^{-1}$ K$^{-1}$); $T$ is thermodynamic temperature; and $A$ is the pre-exponential factor. The value of $\alpha$ was calculated as the absolute cumulative hydrogen release at time $t$ divided by the 8 h final desorption capacity. JMAK fits of Mg-based materials commonly use a selected reaction-fraction interval to reduce deviations during the initial and final stages \cite{ref19,ref20}. Based on the linear ranges here, $0.2\leq\alpha\leq0.8$ was used except for Mg-8La-1Ni at 280~$^{\circ}$C, which departed from linearity above $\alpha=0.6$ and was fitted over $0.2\leq\alpha\leq0.6$. The resulting $\eta$, $k$, and $E_{\mathrm{a}}$ values are apparent parameters for the specified intervals and a 0.1 MPa back pressure. Because Mg-8La did not undergo effective desorption suitable for reliable fitting at 280~$^{\circ}$C, its Arrhenius fit used only 340, 320, and 300~$^{\circ}$C; the other alloys used four temperatures. Arrhenius $R^2$ values are shown in Fig.~\ref{fig:8} and listed in Table~\ref{tab:4}. Unrounded $\ln k$ values were used in Fig.~\ref{fig:8}, whereas the table reports them to three decimal places.
+
+The JMAK fits gave Avrami exponents of 2.120--2.210 for Mg-8La and 0.830--1.320 for the Ni-containing alloys, indicating different apparent kinetic characteristics. Variations in $\eta$ may reflect changes in the relative contributions of nucleation, interface migration, and diffusion \cite{ref17,ref18}. However, the driving force, microstructural state, and model applicability can all affect $\eta$, so this parameter alone cannot identify a unique rate-controlling step. Mg$_2$Ni/Mg$_2$NiH$_4$ transformations and microstructural changes may contribute to the response, but no single microscopic control mechanism is assigned here.
+
+The apparent activation energy is an integrated kinetic parameter for the specified model, reaction-fraction interval, and back pressure. The values for Mg-8La, Mg-8La-1Ni, Mg-8La-2Ni, Mg-8La-4Ni, and Mg-8La-8Ni were 158.8, 129.3, 108.4, 96.8, and 90.2 kJ mol$^{-1}$, respectively, showing an overall decrease with Ni content. Their $t_{90}$ values at 340~$^{\circ}$C were approximately 18, 3, 3, 2, and 2 min. Increasing Ni content was therefore associated with a faster apparent dehydrogenation response under the present conditions.
+
+Only dehydrogenation activation energies were calculated. Absorption was not fitted in the same manner because the curves may involve surface reaction, nucleation and growth, and diffusion at different stages, and the current data do not define a uniform, stable JMAK linear interval. The absorption curves are therefore compared only in terms of rate and capacity, without inferring an activation energy or unique rate-controlling mechanism.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figure-08.png}
+\caption{JMAK and Arrhenius fits: (a, b) Mg-8La; (c, d) Mg-8La-1Ni; (e, f) Mg-8La-2Ni; (g, h) Mg-8La-4Ni; and (i, j) Mg-8La-8Ni. Time is in seconds. Fits used $0.2\leq\alpha\leq0.8$, except Mg-8La-1Ni at 280~$^{\circ}$C, for which $0.2\leq\alpha\leq0.6$ was used.}\label{fig:8}
+\end{figure}
+
+\subsection{Differential scanning calorimetry}
+All hydrogenated samples showed distinct endothermic peaks during heating (Fig.~\ref{fig:9}), reflecting the combined thermal response of hydride decomposition. The peak temperatures of the 0Ni, 1Ni, 2Ni, 4Ni, and 8Ni samples were 451, 440, 439, 413, and 404~$^{\circ}$C, respectively. They decreased overall with Ni content, although changes between adjacent compositions were not uniform. This trend agrees with the overall decrease in apparent activation energy and indicates that Ni addition was associated with an easier apparent dehydrogenation response at the same heating rate. DSC peak temperatures also depend on reaction kinetics and measurement conditions and therefore do not directly establish a comparable change in equilibrium thermodynamic stability.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figure-09.png}
+\caption{DSC curves of hydrogenated Mg-8La-$x$Ni alloys. The endothermic direction is downward, and curves are shifted vertically for comparison.}\label{fig:9}
+\end{figure}
+
+\section{Conclusions}
+Mg-8La-$x$Ni ($x=0$, 1, 2, 4, and 8 wt.\%) alloys were prepared by melting. The principal conclusions are as follows.
+\begin{enumerate}
+\item The as-cast Mg-8La alloy consisted mainly of Mg and Mg$_{17}$La$_2$. Mg$_2$Ni was not clearly detected in the 1Ni sample, so its fine second phases were not assigned uniquely. Combined diffraction peaks and Ni-rich regions support Mg$_2$Ni-related second phases in the 2Ni, 4Ni, and 8Ni samples, although the entire lamellar structure is not uniquely assigned to Mg$_2$Ni. Increasing Ni content accompanied local coarsening and reduced continuity of La-rich regions and more evident Ni-rich regions. These assignments are qualitative and based on combined XRD and representative SEM/EDS fields.
+\item XRD is consistent with decomposition of Mg$_{17}$La$_2$ into MgH$_2$ and LaH$_3$ during initial activation/hydrogenation. LaH$_3$ remained detectable after dehydrogenation, and no clear Mg$_{17}$La$_2$ recovery was observed. Ex situ XRD is consistent with reversible Mg/MgH$_2$ and Mg$_2$Ni/Mg$_2$NiH$_4$ transformations but does not directly establish the in situ pathway.
+\item Absorption and desorption enthalpies remained in similar ranges and did not vary strictly monotonically with Ni content, indicating a limited effect on equilibrium thermodynamic parameters and continued dominance of the Mg/MgH$_2$ equilibrium. The DSC peak of Mg-8La-8Ni was approximately 47~$^{\circ}$C lower than that of Mg-8La, reflecting improved apparent dehydrogenation behavior under identical conditions but not, by itself, reduced thermodynamic stability.
+\item Ni addition generally accelerated the initial absorption response, although differences among Ni contents were not strictly monotonic at every temperature. Apparent dehydrogenation activation energies decreased overall from 158.8 to 90.2 kJ mol$^{-1}$, the 340~$^{\circ}$C $t_{90}$ decreased from approximately 18 to 2 min, and DSC peaks decreased from 451 to 404~$^{\circ}$C. The kinetic change accompanied Mg$_2$Ni/Mg$_2$NiH$_4$-related phases and microstructural evolution, but the evidence establishes correlation only and the effect on apparent equilibrium thermodynamics remained limited.
+\end{enumerate}
+
+\section*{CRediT authorship contribution statement}
+\textbf{To be completed by the authors after confirming each contributor's role.}
+\section*{Declaration of competing interest}
+\textbf{To be confirmed by all authors before submission.}
+\section*{Data availability}
+\textbf{To be completed with the actual data-access conditions.}
+\section*{Acknowledgements}
+\textbf{Funding information and acknowledgements to be completed.}
+\section*{Declaration of generative AI and AI-assisted technologies in the writing process}
+OpenAI Codex was used to assist Chinese-to-English translation and LaTeX format conversion. The authors must review and edit the resulting text and take responsibility for the submitted manuscript. Confirm the journal's current required wording before submission.
+
+\bibliographystyle{elsarticle-num}
+\bibliography{bib/references}
+\end{document}

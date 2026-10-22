@@ -1,0 +1,91 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{raremetals}[2026/09/07 Unofficial Word-template migration profile]
+
+\RequirePackage{iftex}
+\ifXeTeX\else
+  \PackageError{raremetals}{This migration profile requires XeLaTeX}{Set engine to xelatex.}
+\fi
+\RequirePackage{fontspec}
+\RequirePackage{geometry}
+\RequirePackage{setspace}
+\RequirePackage{caption}
+\RequirePackage{booktabs}
+\RequirePackage{graphicx}
+\RequirePackage{hyperref}
+\RequirePackage[numbers,sort&compress]{natbib}
+
+% Times New Roman has no glyph for the single Unicode Celsius character U+2103.
+% Keep source text readable while typesetting it as a degree sign plus upright C.
+\catcode`℃=\active
+\protected\def℃{\ensuremath{{}^{\circ}\mathrm{C}}}
+
+\geometry{letterpaper,top=1in,bottom=1in,left=1.25in,right=1.25in}
+\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{}
+\IfFontExistsTF{Songti SC}{\setCJKmainfont{Songti SC}}{}
+\IfFontExistsTF{Heiti SC}{\setCJKsansfont{Heiti SC}}{}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+\setlength{\bibsep}{0pt}
+\setstretch{1.28}
+\hypersetup{hidelinks}
+
+\ctexset{
+  section={format=\normalfont\fontsize{14}{18}\selectfont,beforeskip=7.15pt,afterskip=7.15pt},
+  subsection={format=\bfseries\fontsize{10.5}{18}\selectfont,beforeskip=0pt,afterskip=0pt},
+  subsubsection={format=\normalfont\fontsize{10.5}{18}\selectfont,beforeskip=0pt,afterskip=0pt}
+}
+\captionsetup{font={small,bf},labelfont=bf,justification=centering,singlelinecheck=false}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+
+\newcommand{\RMTitleCN}[1]{\def\rm@titlecn{#1}}
+\newcommand{\RMAuthorCN}[1]{\def\rm@authorcn{#1}}
+\newcommand{\RMAffiliationCN}[1]{\def\rm@affiliationcn{#1}}
+\newcommand{\RMAbstractCN}[1]{\def\rm@abstractcn{#1}}
+\newcommand{\RMKeywordsCN}[1]{\def\rm@keywordscn{#1}}
+\newcommand{\RMClassification}[1]{\def\rm@classification{#1}}
+\newcommand{\RMTitleEN}[1]{\def\rm@titleen{#1}}
+\newcommand{\RMAuthorEN}[1]{\def\rm@authoren{#1}}
+\newcommand{\RMAffiliationEN}[1]{\def\rm@affiliationen{#1}}
+\newcommand{\RMAbstractEN}[1]{\def\rm@abstracten{#1}}
+\newcommand{\RMKeywordsEN}[1]{\def\rm@keywordsen{#1}}
+\newcommand{\RMFunding}[1]{\def\rm@funding{#1}}
+\newcommand{\RMAuthorBio}[1]{\def\rm@authorbio{#1}}
+\newcommand{\RMCorrespondingAuthor}[1]{\def\rm@corresponding{#1}}
+
+\newcommand{\makermfrontmatter}{%
+  \begin{center}
+    {\bfseries\fontsize{21}{24}\selectfont \rm@titlecn\par}
+    \vspace{7pt}
+    {\fontsize{14}{18}\selectfont \rm@authorcn\par}
+    {\fontsize{10.5}{15}\selectfont \rm@affiliationcn\par}
+  \end{center}
+  \vspace{5pt}
+  {\fontsize{9}{18}\selectfont\noindent\textbf{摘要：}\rm@abstractcn\par}
+  {\fontsize{9}{18}\selectfont\noindent\textbf{关键词：}\rm@keywordscn\par}
+  {\fontsize{9}{18}\selectfont\noindent\textbf{中图分类号：}\rm@classification\quad
+   \textbf{文献标识码：}【编辑部填写】\quad\textbf{文章编号：}【编辑部填写】\par}
+  \vspace{5pt}
+}
+
+\newcommand{\makermenglish}{%
+  \clearpage
+  {\bfseries\fontsize{16}{18}\selectfont\noindent\rm@titleen\par}
+  {\fontsize{10.5}{18}\selectfont\noindent\rm@authoren\par}
+  {\itshape\fontsize{10.5}{18}\selectfont\noindent\rm@affiliationen\par}
+  {\fontsize{9}{18}\selectfont\noindent\textbf{Abstract: }\rm@abstracten\par}
+  {\fontsize{9}{18}\selectfont\noindent\textbf{Key words: }\rm@keywordsen\par}
+}
+
+\newcommand{\makermmetadata}{%
+  \vspace{8pt}
+  {\fontsize{7.5}{11}\selectfont
+    \noindent\textbf{基金项目：}\rm@funding\par
+    \noindent\textbf{作者简介：}\rm@authorbio\par
+    \noindent\textbf{通信作者：}\rm@corresponding\par}
+}
+
+\newcommand{\bilingualcaption}[2]{\caption{#1\\[1pt]#2}}
+\newenvironment{rmreferences}{\begingroup\fontsize{7.5}{15}\selectfont}{\endgroup}
+
+\AtBeginDocument{\pagestyle{plain}\fontsize{10.5}{18}\selectfont}

@@ -1,0 +1,67 @@
+\documentclass[UTF8,10pt]{ctexart}
+\usepackage{raremetals}
+
+% 本文件是从期刊 Word 模板提炼的非官方 LaTeX 迁移入口。
+% 投稿前请核对当期官方模板；编辑部字段不要由作者虚构。
+\RMTitleCN{【中文题目：官网要求不超过20字】}
+\RMAuthorCN{【作者姓名】}
+\RMAffiliationCN{（【单位全称，城市 邮政编码】）}
+\RMAbstractCN{【官网要求中文摘要超过350字，应说明研究问题、过程和方法、主要结果与结论，并填写真实定量结果。】}
+\RMKeywordsCN{【关键词1；关键词2；关键词3】}% 官网要求3--6个
+\RMClassification{【中图分类号】}
+
+\RMTitleEN{English Title within 200 characters}
+\RMAuthorEN{Author One, Author Two}
+\RMAffiliationEN{(Affiliation, City Postal Code, China)}
+\RMAbstractEN{Insert the 800--1000-word English long abstract required by the journal. Do not copy the Chinese abstract mechanically without checking the current instructions.}
+\RMKeywordsEN{keyword one; keyword two; keyword three}
+
+\RMFunding{【基金名称及编号；无则按期刊要求处理】}
+\RMAuthorBio{【第一作者姓名、出生年、性别、生源地、学历或职称、研究方向和电子邮箱】}
+\RMCorrespondingAuthor{【姓名、职称、电话和电子邮箱】}
+
+\begin{document}
+\makermfrontmatter
+
+% 官网要求引言200--400字，不编号、不显示“引言”二字，也不叙述结果或结论。
+【在这里写引言正文，并使用真实引用\cite{example2026}。】
+
+\section{实验}
+\subsection{实验材料}
+【填写实验材料与方法。】
+
+\begin{table}[htbp]
+  \centering
+  \bilingualcaption{中文表题}{English table title}
+  \begin{tabular}{ccc}
+    \toprule
+    项目 & 数值 & 单位 \\
+    \midrule
+    【填写】 & 【填写】 & 【填写】 \\
+    \bottomrule
+  \end{tabular}
+  \label{tab:example}
+\end{table}
+
+\section{结果与讨论}
+\subsection{结果}
+【填写结果与讨论；图表必须在正文中引用。】
+
+\begin{figure}[htbp]
+  \centering
+  \fbox{\rule{0pt}{35mm}\rule{0.72\linewidth}{0pt}}
+  \bilingualcaption{中文图题}{English figure title}
+  \label{fig:example}
+\end{figure}
+
+\section{结论}
+【填写由数据直接支持的结论。】
+
+\begin{rmreferences}
+\bibliographystyle{unsrt}
+\bibliography{bib/references}
+\end{rmreferences}
+
+\makermenglish
+\makermmetadata
+\end{document}

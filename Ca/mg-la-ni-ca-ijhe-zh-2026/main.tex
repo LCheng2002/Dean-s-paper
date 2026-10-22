@@ -1,0 +1,223 @@
+\documentclass[preprint,12pt]{elsarticle}
+\usepackage{iftex}
+\ifXeTeX\else\PackageError{IJHE Chinese migration}{XeLaTeX is required}{}\fi
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{amsmath,amssymb}
+\usepackage{unicode-math}
+\usepackage{booktabs,graphicx,tabularx,array}
+\usepackage{caption}
+\usepackage[hidelinks]{hyperref}
+\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{\setmainfont{TeX Gyre Termes}}
+\IfFontExistsTF{STIX Two Math}{\setmathfont{STIX Two Math}}{\setmathfont{Latin Modern Math}}
+\IfFontExistsTF{Songti SC}{\setCJKmainfont{Songti SC}}{\setCJKmainfont{FandolSong-Regular}}
+\IfFontExistsTF{Heiti SC}{\setCJKsansfont{Heiti SC}}{\setCJKsansfont{FandolHei-Regular}}
+\renewcommand{\figurename}{图}\renewcommand{\tablename}{表}\renewcommand{\refname}{参考文献}
+\abstracttitle{摘要}\keywordtitle{关键词}
+\setlength{\parindent}{2em}\setlength{\parskip}{0pt}
+\captionsetup[figure]{justification=raggedright,singlelinecheck=false}
+\journal{International Journal of Hydrogen Energy}
+\newcommand{\cafig}[3]{\begin{figure}[htbp]\centering\includegraphics[width=\linewidth,height=.78\textheight,keepaspectratio]{figures/#1}\caption{#2}\label{#3}\end{figure}}
+\begin{document}
+\begin{frontmatter}
+\title{Ca微合金化对Mg-8La-4Ni合金腐蚀性能与储氢性能的影响}
+\author[aff1]{【作者姓名待补充】\corref{cor1}}\ead{【通信作者邮箱待补充】}\cortext[cor1]{通信作者。}
+\affiliation[aff1]{organization={【单位待补充】},city={【城市待补充】},postcode={【邮编待补充】},country={China}}
+\begin{abstract}
+为考察Ca微合金化对Mg--La--Ni基储氢合金水腐蚀行为与储氢性能的影响，本文制备Mg-8La-4Ni、Mg-8La-4Ni-0.3Ca、Mg-8La-4Ni-0.7Ca和Mg-8La-4Ni-1.4Ca合金，并开展ICP、SEM、去离子水浸泡析氢、PCT和动力学测试。BSE图像显示，四种铸态合金均由α-Mg基体和枝间第二相网络构成，少量Ca加入后α-Mg区域整体细化，未观察到清晰可分辨的新Ca-rich第二相。150 min浸泡后，四种合金的累积析氢量约为12.2、8.5、6.9和5.2 mL·cm$^{-2}$；三种含Ca合金相对基体分别降低约30.3\%、43.4\%和57.4\%。340~$^{\circ}$C下，0.7Ca合金的吸氢量和放氢量最高，分别为6.09 wt.\%和5.85 wt.\%，1.4Ca合金为5.57 wt.\%和5.35 wt.\%。0Ca、0.3Ca、0.7Ca和1.4Ca合金的脱氢表观活化能分别为96.8、105.5、138.2和130.8 kJ·mol$^{-1}$，表明容量与动力学随Ca含量呈非单调变化。实验结果表明，Ca含量增加与短时析氢量下降相关，而0.7Ca在本组测试中取得较高储氢容量。
+\end{abstract}
+\begin{keyword}Mg-8La-4Ni合金 \sep Ca微合金化 \sep 水腐蚀 \sep 储氢性能\end{keyword}
+\end{frontmatter}
+\fontsize{10.5}{18}\selectfont
+\section{引言}
+
+在“双碳”目标牵引的能源转型背景下，能源系统正加速向低碳化与电气化演进；针对深度减排路径，氢能被认为是连接可再生能源消纳、长时储能与工业/交通终端脱碳的重要能量载体之一\cite{ref1}。从需求侧看，全球氢气需求仍以炼化与传统工业为主，但在重工业、长距离交通与储能等新型低碳应用场景中，氢能的规模化显得尤为重要\cite{ref2}。受限于氢气低体积能量密度及其储运安全性要求，开发安全、紧凑且成本可控的储氢技术是氢能利用链条中的关键环节；其中，固态储氢材料通过氢在材料中的可逆吸放实现相对温和压力条件下的高密度储氢，被视为具有应用潜力的技术路线\cite{ref3}。
+
+镁基储氢材料因资源丰富、成本低、可逆性好且理论储氢密度高而受到广泛关注，其中MgH2的理论储氢量可达7.60 wt.\% \cite{ref3}。然而，镁基体系普遍存在热力学稳定性高、吸放氢动力学迟缓以及循环寿命受限等问题，限制了其工程化应用。针对上述瓶颈，构建多元合金体系并利用过渡金属与稀土元素的协同效应以提升动力学与可逆性，是镁基储氢材料的重要改性思路之一；以Mg–Ni–La为代表的稀土–镁基体系被认为在质量/体积储氢密度、可逆性及应用适配性方面具有优势\cite{ref4}。但在实际服役与循环过程中，Mg及其合金化体系化学活性高，易发生表面氧化/腐蚀并形成阻碍氢扩散与界面反应的产物层，从而导致容量衰减与循环稳定性下降；在La–Mg–Ni基体系的循环退化研究中，氧化/腐蚀被指出是影响容量保持的重要因素之一\cite{ref5} 。因此，如何在保持储氢性能的同时提升材料的抗氧化/耐腐蚀能力，从机理上延缓界面劣化并提升循环寿命，是Mg–Ni–La体系面向服役应用亟需解决的问题。
+
+微合金化可通过晶粒、第二相电化学特性和腐蚀产物膜改变Mg合金腐蚀行为。已有研究表明，微量Ca可改善AZ31合金腐蚀产物层的保护性\cite{ref6}；在Mg–Sc合金中，Ca的作用随含量和组织状态呈非单调变化\cite{ref7}；在含Cl$^-$体系中，Ca相关相还可能改变微电偶作用\cite{ref8}。据此，本文将Ca微合金化引入Mg–Ni–La储氢合金，比较四种Ca含量下的短时去离子水析氢和储氢性能，并分析Ca添加量与腐蚀及储氢性能的关系。由于尚未开展长期腐蚀—储氢耦合循环，本研究不对循环寿命作直接结论。
+
+基于上述背景，本文以Mg-8La-4Ni（wt.\%）为基体合金，对未添加Ca及添加0.3 wt.\%、0.7 wt.\%和1.4 wt.\% Ca的样品开展对比研究。采用ICP核对实际成分；利用SEM和XRD结果比较四种合金的物相与组织；采用去离子水浸泡析氢法比较四种合金的短时腐蚀行为；通过PCT、van’t Hoff拟合、吸放氢动力学及JMAK/Arrhenius分析比较储氢热力学、容量和脱氢动力学。
+
+\section{实验方法}
+
+\subsection{合金样品制备}
+
+采用熔炼法制备Mg-8La-4Ni、Mg-8La-4Ni-0.3Ca、Mg-8La-4Ni-0.7Ca和Mg-8La-4Ni-1.4Ca四种样品。熔炼后将铸态合金在氩气保护下切割并制备为粒径＜80目的粉末。采用美国Thermo Fisher Scientific iCAP 7600型电感耦合等离子体发射光谱仪分析四种合金的实际元素含量，结果见表~\ref{tab:1}。表中实测La、Ni和Ca含量作为本文成分核对依据。
+
+\begin{table}[htbp]
+\centering
+\caption{四种合金的ICP分析结果}
+\label{tab:1}
+\begingroup\fontsize{8}{10}\selectfont
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+合金类型 & La(wt.\%) & Ni(wt.\%) & Ca(wt.\%) \\
+\midrule
+Mg-8La-4Ni & 7.88±0.04 & 3.89±0.01 & - \\
+Mg-8La-4Ni-0.3Ca & 7.97±0.03 & 4.07±0.02 & 0.30±0.01 \\
+Mg-8La-4Ni-0.7Ca & 7.94±0.02 & 3.82±0.02 & 0.73±0.01 \\
+Mg-8La-4Ni-1.4Ca & 7.81±0.03 & 4.15±0.01 & 1.38±0.01 \\
+\bottomrule
+\end{tabular}
+\endgroup
+\end{table}
+
+\subsection{物相与微观组织分析}
+
+铸态合金的物相分析采用德国Bruker D8 ADVANCE Da Vinci型多功能X射线衍射仪（Cu靶）完成。为分析Ca添加前后铸态合金微观组织形貌的变化，采用美国Thermo Fisher Scientific Helios 5 UX型聚焦离子束-电子束双束显微系统的SEM模块对四种样品进行显微观察，重点对第二相的形貌、分布和α-Mg基体特征尺度开展对比分析。SEM测试电压为10 kV，电流设定为1.4 nA。测试前，铸态合金试样依次经过热镶嵌、磨制与抛光处理，以获得平整洁净的观察表面。
+
+\subsection{腐蚀性能测试}
+
+为对比评估Ca添加量对Mg-8La-4Ni合金耐腐蚀性能的影响，采用去离子水浸泡条件下的析氢法进行腐蚀对比试验。将四种合金加工为相同尺寸的立方体试样（10 mm×10 mm×10 mm，体积约1 cm³），每种成分设置三组平行试样，并将六个表面打磨平整后在相同条件下浸没于去离子水中。通过排水集气装置实时收集浸泡过程中产生的氢气，以量气管读数获得累积析氢体积，读数间隔为5 min，总测试时间为150 min。为便于比较，将析氢量按试样表面积归一化，得到单位面积累积析氢量随时间的变化曲线。
+
+\subsection{储氢性能测试}
+
+合金的储氢性能测试包括样品激活、吸放氢热力学测试和动力学测试，均在HPSA-auto型高压体积法储氢装置上完成，试样质量约200 mg。测试前，样品在340 $^\circ$C下进行5个完整吸放氢循环，每个循环包括8 h吸氢和8 h放氢。每轮测试前在340 $^\circ$C下抽真空1 h。分别在340 $^\circ$C、320 $^\circ$C和300 $^\circ$C下测定PCT曲线；动力学测试温度为280–340 $^\circ$C。放氢反应分数$\alpha$定义为时刻$t$的累计放氢量与相同温度下8 h最终放氢量之比，$t$以s计；JMAK线性拟合区间为$0.2\leq\alpha\leq0.8$，由拟合截距除以斜率获得$\ln k$，再以四个温度下的$\ln k$对$1000/(RT)$进行线性拟合，计算表观脱氢活化能。容量统一保留两位小数，脱氢表观活化能保留一位小数，平台压力保留四位小数，热力学参数保留两位小数。
+
+\section{实验结果}
+
+\subsection{物相组成分析}
+
+图~\ref{fig:xrd}给出了Mg--8La--4Ni--xCa（x = 0、0.3、0.7 和 1.4 wt.\%）铸态合金的XRD图谱。四种合金的衍射峰以Mg（α-Mg）为主，并可与图中标示的Mg$_{17}$La$_2$和Mg$_2$Ni特征峰相对应，说明铸态合金主要由α-Mg基体及Mg$_{17}$La$_2$/Mg$_2$Ni相关第二相组成。随着Ca含量由0增加至1.4 wt.\%，各样品的衍射峰整体分布未出现明显新增峰，表明在本测试条件下未观察到明显的物相组成突变。图中Mg$_2$Ca的标准卡片峰位以候选标记给出，但相应位置与邻近峰存在重叠且信号较弱，未形成独立、清晰可分辨的衍射峰。因此，Mg$_2$Ca相在本组XRD图谱中不明显，不能仅据此确认其存在。后文将结合显微组织进一步讨论基体与枝间第二相的形貌特征。
+
+\cafig{figure-01-xrd.png}{四种Mg--8La--4Ni--xCa（x = 0、0.3、0.7 和 1.4 wt.\%）铸态合金的XRD图谱及PDF标准卡片峰位。菱形、圆形和倒三角分别表示Mg、Mg$_2$Ni和Mg$_{17}$La$_2$，十字表示Mg$_2$Ca候选峰位；右侧为34.2$^\circ$--34.8$^\circ$局部放大图。}{fig:xrd}
+
+\subsection{微观组织分析结果}
+
+如图~\ref{fig:1}所示，Mg--8La--4Ni--xCa（x = 0、0.3、0.7 和 1.4 wt.\%）铸态合金均表现出以α-Mg为基体、第二相分布于基体之间的典型多相组织。结合XRD物相分析及已有Mg--La--Ni合金的组织特征可知，主要第二相包括Mg$_{17}$La$_2$和Mg$_2$Ni\cite{ref4,ref15}。其中，α-Mg在BSE图像中主要表现为较暗的连续基体区域，Mg$_{17}$La$_2$多呈亮白色块状或不规则状分布于枝间区域，而Mg$_2$Ni主要与Mg基体形成细小的共晶/棒状组织，共同构成较为连续的枝间第二相网络。随着Ca的加入，合金的基本物相组成及第二相类型未发生明显改变，在现有SEM和XRD检测条件下亦未观察到清晰可分辨的新Ca-rich第二相，但α-Mg基体区域的特征尺度发生了明显变化。未添加Ca时，α-Mg区域整体较为粗大，局部存在尺寸较大的连续Mg-rich区域；加入0.3 wt.\% Ca后，α-Mg区域明显细化，粗大基体区域数量减少，同时枝间第二相网络更加细密。Ca含量增加至0.7 wt.\%后，组织仍保持较细的特征尺度，与0.3Ca合金相比进一步细化并不显著；当Ca含量提高至1.4 wt.\%时，Mg-rich区域整体仍维持较细小的分布，并表现出一定程度的进一步细化趋势。由此可见，少量Ca的加入能够有效细化Mg--8La--4Ni合金的铸态凝固组织，其主要作用首先体现在α-Mg基体特征尺寸的减小，而不是形成大量可见的新Ca-containing第二相。结合已有Mg--Ca合金研究，Ca在α-Mg凝固过程中可能通过溶质分配和固/液界面前沿富集增强成分过冷，从而限制已有α-Mg区域的持续长大，并促进更多潜在形核位置启动，最终导致凝固组织细化\cite{ref6,ref7,ref12}。由于本研究尚未直接表征凝固过程中的Ca偏聚行为，因此上述机制主要作为对实验现象的合理解释。
+
+\cafig{figure-01.png}{Mg--8La--4Ni--xCa（x = 0、0.3、0.7 和 1.4 wt.\%）铸态合金的BSE显微组织：（a--d）1000倍；（e--h）5000倍。}{fig:1}
+
+\subsection{腐蚀性能测试结果}
+
+\subsubsection{去离子水浸泡析氢结果}
+
+为定量比较Ca添加量对Mg-8La-4Ni合金短时水腐蚀行为的影响，采用去离子水浸泡析氢法表征腐蚀过程。如图~\ref{fig:2}所示，四种合金的累积析氢量均随浸泡时间延长而增加，且曲线随Ca含量增加总体下移。150 min时，Mg-8La-4Ni、0.3Ca、0.7Ca和1.4Ca合金的累积析氢量约为12.2、8.5、6.9和5.2 mL·cm$^{-2}$；后三者较基体分别降低约30.3\%、43.4\%和57.4\%。因此，在本试验的成分与150 min去离子水浸泡条件下，Ca含量增加与累积析氢量降低呈一致趋势；该结果不外推至含Cl$^-$介质或长期服役条件。
+
+\cafig{figure-02.png}{Mg-8La-4Ni、Mg-8La-4Ni-0.3Ca、Mg-8La-4Ni-0.7Ca与Mg-8La-4Ni-1.4Ca在去离子水中的累积析氢量—时间曲线}{fig:2}
+
+\subsection{储氢性能测试}
+
+\subsubsection{储氢热力学测试}
+
+为探究Ca添加量对Mg-8La-4Ni合金储氢热力学性能的影响，分别在340 $^\circ$C、320 $^\circ$C和300 $^\circ$C下测试四种合金的PCT曲线。如图~\ref{fig:3}所示，四种合金均呈现可逆吸放氢平台；随着温度由300 $^\circ$C升高至340 $^\circ$C，平台压力逐渐升高，符合金属氢化物吸放氢热力学规律。1.4Ca合金在340 $^\circ$C、320 $^\circ$C、300 $^\circ$C和280 $^\circ$C下的吸氢量分别为5.57、5.45、5.36和5.16 wt.\%，对应放氢量为5.35、5.23、5.15和4.96 wt.\%，放氢/吸氢比约96.00\%。
+
+\cafig{figure-03.png}{Mg-8La-4Ni（a、b）、Mg-8La-4Ni-0.3Ca（c、d）、Mg-8La-4Ni-0.7Ca（e、f）与Mg-8La-4Ni-1.4Ca（g、h）合金的PCT曲线及van’t Hoff拟合结果}{fig:3}
+
+\begin{table}[htbp]
+\centering
+\caption{Mg-8La-4Ni、Mg-8La-4Ni-0.3Ca、Mg-8La-4Ni-0.7Ca与Mg-8La-4Ni-1.4Ca储氢热力学测试参数对比表}
+\label{tab:2}
+\begingroup\fontsize{8}{10}\selectfont
+\setlength{\tabcolsep}{3pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+合金种类 & 测试内容 & 340 $^\circ$C & 320$^\circ$C & 300$^\circ$C & ΔH(kJ·mol$^{-1}$) & ΔS(J·K$^{-1}$·mol$^{-1}$) \\
+\midrule
+Mg-8La-4Ni & 吸氢 & 0.6530 & 0.4030 & 0.2380 & -73.62 & -135.58 \\
+Mg-8La-4Ni & 放氢 & 0.6400 & 0.3910 & 0.2310 & 74.43 & 136.72 \\
+Mg-8La-4Ni-0.3Ca & 吸氢 & 0.6740 & 0.4170 & 0.2470 & -73.31 & -130.53 \\
+Mg-8La-4Ni-0.3Ca & 放氢 & 0.6110 & 0.4070 & 0.2410 & 73.81 & 133.52 \\
+Mg-8La-4Ni-0.7Ca & 吸氢 & 0.4140 & 0.2470 & 0.1430 & -77.73 & -138.58 \\
+Mg-8La-4Ni-0.7Ca & 放氢 & 0.3850 & 0.2220 & 0.1290 & 79.56 & 140.90 \\
+Mg-8La-4Ni-1.4Ca & 吸氢 & 0.4607 & 0.2761 & 0.1596 & -77.43 & -158.13 \\
+Mg-8La-4Ni-1.4Ca & 放氢 & 0.4235 & 0.2515 & 0.1440 & 78.80 & 159.67 \\
+\bottomrule
+\end{tabular}}
+\endgroup
+\end{table}
+
+\subsubsection{储氢动力学测试}
+
+为进一步评估Ca添加量对Mg-8La-4Ni合金储放氢动力学的影响，对四种合金在280–340 $^\circ$C下的动力学曲线进行比较，并采用JMAK/Arrhenius方法获得脱氢表观活化能。如图~\ref{fig:4}和图~\ref{fig:5}所示，四种合金均呈现初期较快、随后趋缓的动力学特征。340 $^\circ$C下，0.7Ca样品的吸氢量和放氢量分别为6.09 wt.\%和5.85 wt.\%，为四种样品中最高；1.4Ca样品为5.57 wt.\%和5.35 wt.\%。0Ca、0.3Ca、0.7Ca和1.4Ca样品的脱氢表观活化能分别为96.8、105.5、138.2和130.8 kJ·mol$^{-1}$，表明Ca含量增加对容量与脱氢动力学的影响并非单调。对0Ca基体，340、320、300和280 $^\circ$C下的JMAK指数$\eta$分别为1.100、1.110、1.090和0.910，$\ln k$分别为$-4.185$、$-4.661$、$-5.355$和$-6.234$；按上述四温度Arrhenius拟合得到$E_{\mathrm{a}}=96.8$ kJ·mol$^{-1}$（$R^2=0.98995$）。
+
+\cafig{figure-04.png}{Mg-8La-4Ni（a、b）、Mg-8La-4Ni-0.3Ca（c、d）、Mg-8La-4Ni-0.7Ca（e、f）与Mg-8La-4Ni-1.4Ca（g、h）合金在不同温度下（340$^\circ$C、320$^\circ$C、300$^\circ$C、280$^\circ$C）的8 h吸氢与30 min放氢动力学曲线}{fig:4}
+
+\cafig{figure-05.png}{Mg-8La-4Ni（a、b）、Mg-8La-4Ni-0.3Ca（c、d）、Mg-8La-4Ni-0.7Ca（e、f）与Mg-8La-4Ni-1.4Ca（g、h）合金放氢动力学JMAK模型拟合与脱氢活化能Arrhenius拟合结果}{fig:5}
+
+\begin{table}[htbp]
+\centering
+\caption{Mg-8La-4Ni、Mg-8La-4Ni-0.3Ca、Mg-8La-4Ni-0.7Ca与Mg-8La-4Ni-1.4Ca合金储氢参数对比（其中吸氢量与放氢量为340 $^\circ$C下的测试结果）}
+\label{tab:3}
+\begingroup\fontsize{8}{10}\selectfont
+\setlength{\tabcolsep}{3pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+合金类型 & 吸氢焓(kJ·mol$^{-1}$) & 放氢焓(kJ·mol$^{-1}$) & 吸氢量(wt.\%) & 放氢量(wt.\%) & 脱氢活化能(kJ·mol$^{-1}$) \\
+\midrule
+Mg-8La-4Ni & -73.62 & 74.43 & 5.41 & 5.09 & 96.8 \\
+Mg-8La-4Ni-0.3Ca & -73.31 & 73.81 & 5.80 & 5.66 & 105.5 \\
+Mg-8La-4Ni-0.7Ca & -77.73 & 79.56 & 6.09 & 5.85 & 138.2 \\
+Mg-8La-4Ni-1.4Ca & -77.43 & 78.80 & 5.57 & 5.35 & 130.8 \\
+\bottomrule
+\end{tabular}}
+\endgroup
+\end{table}
+
+\section{讨论与分析}
+
+\subsection{Ca微合金化对Mg-8La-4Ni合金微观组织的影响}
+
+图~\ref{fig:1}给出了四种合金在相同BSE成像条件下的组织对比。四种合金均保持α-Mg基体与枝间第二相网络的基本形貌，现有SEM和XRD条件下未观察到清晰可分辨的新Ca-rich第二相；Ca含量增加主要对应α-Mg基体特征尺度减小以及枝间区域细化。该组织变化与已有Mg--Ca合金中Ca影响凝固组织和腐蚀行为的认识相符\cite{ref6,ref7,ref12}，但本文尚未直接表征凝固前沿的Ca偏聚、形核数量或第二相定量，因此相关细化机制仍属于对实验现象的合理解释。
+
+本文将组织观察作为成分相关趋势的辅助证据。Ca的固溶、偏聚、第二相分配及腐蚀产物膜作用仍需通过补充相分析、EDS定量和表面实验进一步验证。
+
+\subsection{Ca微合金化对Mg-8La-4Ni合金腐蚀性能的影响}
+
+去离子水中，Mg的阳极溶解与阴极析氢反应可以耦合进行，且MgO/Mg(OH)$_2$腐蚀产物膜可能疏松、易失稳\cite{ref9}。Mg$_2$Ni等Ni相关第二相可作为相对阴极位点并增强局部析氢\cite{ref10}。因此，四种合金在150 min测试中均出现持续析氢。
+
+图~\ref{fig:2}显示，150 min时0.3Ca、0.7Ca和1.4Ca合金的累积析氢量较基体分别降低约30.3\%、43.4\%和57.4\%，其中1.4Ca约为5.2 mL·cm$^{-2}$。已有Mg合金研究表明，Ca可能影响阴极反应与腐蚀产物膜稳定性\cite{ref8,ref12}。但由于尚无本文体系的腐蚀膜成分、界面电化学和长期浸泡数据，现阶段只能确认Ca含量与短时析氢量下降相关，不能确定唯一机制。
+
+\subsection{Ca微合金化对Mg-8La-4Ni合金储氢性能的影响}
+
+由表~\ref{tab:2}可见，0.3Ca与基体在300–340 $^\circ$C区间的平台压力及焓熵变化接近；0.7Ca和1.4Ca的吸氢焓分别为-77.73和-77.43 kJ·mol$^{-1}$，放氢焓分别为79.56和78.80 kJ·mol$^{-1}$。340 $^\circ$C下，1.4Ca的吸/放氢平台压力为0.4607/0.4235 MPa，高于0.7Ca的0.4140/0.3850 MPa。总体上，0.7Ca和1.4Ca相较基体呈现更低的平台压力和更大的吸/放氢焓绝对值，表明Ca含量变化伴随储氢热力学参数的明显调整；相关解释以实验PCT与van’t Hoff结果为依据\cite{ref13}。
+
+综合340 $^\circ$C结果（表~\ref{tab:3}），吸氢量/放氢量由基体的5.41/5.09 wt.\%增至0.3Ca的5.80/5.66 wt.\%和0.7Ca的6.09/5.85 wt.\%，在1.4Ca时回落至5.57/5.35 wt.\%。脱氢表观活化能依次为96.8、105.5、138.2和130.8 kJ·mol$^{-1}$。容量与活化能均呈非单调变化，说明需要在容量和脱氢动力学之间权衡。由于腐蚀试验与储氢试验未设计成同一样品暴露前后的因果对照，本文将二者视为平行的成分相关趋势，不把耐蚀性提高直接解释为储氢容量增加的原因。 相关储氢行为的成分效应可参照已有Mg$_2$Ni及RE–Mg基合金研究\cite{ref14,ref15}。
+
+\subsection{研究局限性}
+
+本研究仍存在以下限制：其一，现有XRD分析主要依据峰位匹配和候选峰位标注，尚未开展Rietveld精修或相含量定量，Mg$_2$Ca因峰弱且与邻近峰重叠而不能由本图谱确认；四种合金的SEM观察虽已覆盖，但仍缺少配套的EDS定量分析；其二，ICP实测La、Ni含量存在组间差异，因而实验趋势不能完全归因于Ca单一变量；其三，腐蚀结果来自150 min去离子水析氢试验，尚不能代表含Cl$^-$环境、长期浸泡或循环服役；其四，尚未完成腐蚀暴露前后储氢性能的同一样品对照，二者之间的因果关系未被验证。后续需补充相含量定量、EDS分析、电化学与长期腐蚀试验以及腐蚀—储氢耦合循环验证。
+
+\section{结论}
+
+本文比较了四种Ca含量合金的短时去离子水析氢与储氢性能。主要结论如下：
+
+\noindent (1) 四种Mg--8La--4Ni--xCa合金均呈现α-Mg基体和枝间第二相网络。少量Ca加入后α-Mg基体特征尺寸减小，现有SEM和XRD条件下未观察到清晰可分辨的新Ca-rich第二相；该细化机制仍需Ca偏聚和凝固过程表征进一步验证。
+
+\noindent (2) 150 min去离子水浸泡后，Mg-8La-4Ni、0.3Ca、0.7Ca和1.4Ca合金的累积析氢量约为12.2、8.5、6.9和5.2 mL·cm$^{-2}$，含Ca合金较基体分别降低约30.3\%、43.4\%和57.4\%。该结论限于本试验的短时去离子水条件。
+
+\noindent (3) 储氢容量随Ca含量先升高后回落。340 $^\circ$C下，0.7Ca样品的吸氢量和放氢量最高，为6.09 wt.\%和5.85 wt.\%；1.4Ca样品为5.57 wt.\%和5.35 wt.\%。0Ca、0.3Ca、0.7Ca和1.4Ca样品的脱氢表观活化能分别为96.8、105.5、138.2和130.8 kJ·mol$^{-1}$，表明容量和动力学响应均非单调。
+
+\section*{CRediT作者贡献声明}
+【待作者补充】
+
+\section*{利益冲突声明}
+【待作者确认】
+
+\section*{数据可用性}
+【待作者补充】
+
+\section*{致谢与基金}
+【待作者补充】
+
+\begin{thebibliography}{14}
+\bibitem{ref1} U. Remme, “Global Hydrogen Review 2025,” 2025.
+\bibitem{ref2} U. Remme, “Global Hydrogen Review 2024,” 2024.
+\bibitem{ref3} Y. Xu, Y. Zhou, Y. Li, Y. Hao, P. Wu, and Z. Ding, “Magnesium-Based Hydrogen Storage Alloys: Advances, Strategies, and Future Outlook for Clean Energy Applications,” Molecules, vol. 29, no. 11, p. 2525, May 2024, doi: 10.3390/molecules29112525.
+\bibitem{ref4} D. Zhou et al., “An overview of RE-Mg-based alloys for hydrogen storage: Structure, properties, progresses and perspectives,” Journal of Magnesium and Alloys, vol. 13, no. 1, pp. 41–70, Jan. 2025, doi: 10.1016/j.jma.2024.12.020.
+\bibitem{ref5} Y. Liu, H. Pan, Y. Yue, X. Wu, N. Chen, and Y. Lei, “Cycling durability and degradation behavior of La–Mg–Ni–Co-type metal hydride electrodes,” Journal of Alloys and Compounds, vol. 395, no. 1, pp. 291–299, May 2005, doi: 10.1016/j.jallcom.2004.11.032.
+\bibitem{ref6} P. Wang et al., “Role of trace additions of Ca and Sn in improving the corrosion resistance of Mg-3Al-1Zn alloy,” Int J Miner Metall Mater, vol. 29, no. 8, pp. 1559–1569, Aug. 2022, doi: 10.1007/s12613-021-2268-4.
+\bibitem{ref7} C. Zhang et al., “Effect of Ca Element on Microstructure and Corrosion Behavior of Single-Phase Mg–Sc Alloy,” Metals, vol. 12, no. 1, p. 93, Jan. 2022, doi: 10.3390/met12010093.
+\bibitem{ref8} P. Metalnikov et al., “Effect of Ca Addition on Corrosion Behavior of Wrought AM60 Magnesium Alloy in Alkaline Solutions,” Metals, vol. 11, no. 8, Jul. 2021, doi: 10.3390/met11081172.
+\bibitem{ref9} S. Thomas, N. V. Medhekar, G. S. Frankel, and N. Birbilis, “Corrosion mechanism and hydrogen evolution on Mg,” Current Opinion in Solid State and Materials Science, vol. 19, no. 2, pp. 85–94, Apr. 2015, doi: 10.1016/j.cossms.2014.09.005.
+\bibitem{ref10} D. Wang et al., “Adjustable corrosion and mechanical properties of Mg-Zn-Ca-Ni alloys for fracturing materials,” Journal of Magnesium and Alloys, vol. 13, no. 6, pp. 2618–2635, Jun. 2025, doi: 10.1016/j.jma.2024.07.011.
+\bibitem{ref12} M. Deng et al., “Approaching ‘stainless magnesium’ by Ca micro-alloying,” Mater. Horiz., vol. 8, no. 2, pp. 589–596, Feb. 2021, doi: 10.1039/D0MH01380C.
+\bibitem{ref13} M. Zhu, Y. Lu, L. Ouyang, and H. Wang, “Thermodynamic Tuning of Mg-Based Hydrogen Storage Alloys: A Review,” Materials (Basel), vol. 6, no. 10, pp. 4654–4674, Oct. 2013, doi: 10.3390/ma6104654.
+\bibitem{ref14} X. Q. Tran, S. D. McDonald, Q. Gu, S. Matsumura, and K. Nogita, “Effect of trace Na additions on the hydrogen absorption kinetics of Mg$_2$Ni,” Journal of Materials Research, vol. 31, no. 9, pp. 1316–1327, May 2016, doi: 10.1557/jmr.2016.123.
+\bibitem{ref15} H. Sun, P. Sheng, J. Li, S. Guo, Q. Ge, and Y. Zhang, “Enhancing hydrogen storage properties in multi-component RE–Mg-based alloys through Ca incorporation,” Journal of Energy Storage, vol. 126, p. 117033, Aug. 2025, doi: 10.1016/j.est.2025.117033.
+\end{thebibliography}
+\end{document}

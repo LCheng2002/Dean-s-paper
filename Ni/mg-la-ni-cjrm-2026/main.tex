@@ -1,0 +1,271 @@
+\documentclass[UTF8,10pt]{ctexart}
+\usepackage{raremetals}
+\usepackage{amsmath}
+
+% 由 Ni添加小论文初稿_修改1和3.docx 迁移；未改写研究内容。
+% 作者、单位、分类号和英文长摘要在源文件中缺失，保留待补充标记。
+\RMTitleCN{Ni含量对铸态Mg-8La-xNi合金显微组织及储氢性能的影响}
+\RMAuthorCN{【作者姓名待补充】}
+\RMAffiliationCN{（【单位全称、城市、邮政编码待补充】）}
+\RMAbstractCN{为明确Ni含量对Mg-8La合金显微组织及储氢性能的影响，采用熔炼法制备铸态Mg-8La-xNi（x = 0、1、2、4、8 wt.\%）合金，并通过XRD、SEM/EDS、PCT、等温动力学和DSC测试表征其相组成、组织特征及吸放氢行为。结果表明，未添加Ni的Mg-8La合金主要由Mg基体和Mg$_{17}$La$_2$相组成；1Ni样品中Mg$_2$Ni衍射峰不明显，2Ni、4Ni和8Ni样品中可观察到较明确的Mg$_2$Ni衍射峰，La富集第二相随Ni含量增加总体呈局部粗化和连续性降低的趋势。含Ni合金的吸氢态样品中检测到Mg$_2$NiH$_4$相。van’t Hoff分析表明，不同Ni含量合金的吸、放氢焓变未呈系统性变化，测得主平台的主要热力学贡献可能仍来自Mg/MgH$_2$平衡。Arrhenius拟合得到Mg-8La、Mg-8La-1Ni、Mg-8La-2Ni、Mg-8La-4Ni和Mg-8La-8Ni合金的脱氢表观活化能分别为158.8、129.3、108.4、96.8和90.2 kJ/mol。在340 ℃下，其$t_{90}$分别约为18、3、3、2和2 min。DSC脱氢峰温依次为451.5、439.6、439.2、413.8和404.5 ℃。随Ni含量增加，合金的脱氢响应总体加快，而Ni含量对表观平衡热力学参数的影响有限。}
+\RMKeywordsCN{固态储氢；镁稀土合金；微观组织；热力学；动力学}
+\RMClassification{【中图分类号待补充】}
+
+\RMTitleEN{Effect of Ni Content on the Microstructure and Hydrogen Storage Properties of As-Cast Mg-8La-xNi Alloys}
+\RMAuthorEN{【English author names pending】}
+\RMAffiliationEN{(English affiliation pending)}
+\RMAbstractEN{The effects of Ni content on the microstructure and hydrogen storage properties of as-cast Mg-8La-xNi (x = 0, 1, 2, 4, and 8 wt.\%) alloys were investigated using X-ray diffraction, scanning electron microscopy/energy-dispersive spectroscopy, pressure--composition--temperature measurements, isothermal hydrogenation/dehydrogenation kinetics, and differential scanning calorimetry. The Mg-8La alloy without Ni consisted mainly of an Mg matrix and Mg$_{17}$La$_2$. The Mg$_2$Ni diffraction peak was not clearly resolved in the 1Ni alloy, whereas more distinct Mg$_2$Ni-related peaks were observed in the 2Ni, 4Ni, and 8Ni alloys. With increasing Ni content, La-rich regions generally became locally coarser and less continuous, while Ni-rich lamellar or secondary-phase regions became more apparent. Mg$_2$NiH$_4$ was detected in the hydrogenated Ni-containing alloys. The main plateau enthalpies obtained from van't Hoff analysis did not vary systematically with Ni content, suggesting that the measured plateau thermodynamics remained dominated by the Mg/MgH$_2$ equilibrium within the investigated composition range. The apparent activation energies for dehydrogenation of Mg-8La, Mg-8La-1Ni, Mg-8La-2Ni, Mg-8La-4Ni, and Mg-8La-8Ni were 158.8, 129.3, 108.4, 96.8, and 90.2 kJ/mol, respectively. At 340~$^{\circ}$C, the corresponding $t_{90}$ values were approximately 18, 3, 3, 2, and 2 min. The Avrami exponent decreased from approximately 2.1--2.2 for Mg-8La to 0.83--1.32 for the Ni-containing alloys, indicating a change in the apparent dehydrogenation kinetics within the selected fitting range. In the DSC measurements at 5~$^{\circ}$C/min, the hydrogen desorption onset temperatures were 449.2, 438.1, 438.1, 412.2, and 402.3~$^{\circ}$C, while the peak temperatures were 451.5, 439.6, 439.2, 413.8, and 404.5~$^{\circ}$C, respectively. These results show that increasing Ni content was associated with an overall acceleration of the apparent dehydrogenation response, whereas its influence on the measured equilibrium thermodynamic parameters was limited. The change in Avrami exponent and the formation of Mg$_2$Ni/Mg$_2$NiH$_4$-related phases suggest that Ni may modify the apparent dehydrogenation pathway through changes in phase transformation and microstructural evolution. This interpretation remains a correlation-based inference and requires direct validation by time-resolved phase characterization.}
+\RMKeywordsEN{Solid-state hydrogen storage; magnesium-rare earth alloys; microstructure; thermodynamics; kinetics}
+
+\RMFunding{【基金名称及编号待补充】}
+\RMAuthorBio{【第一作者简介和电子邮箱待补充】}
+\RMCorrespondingAuthor{【通信作者、职称、电话和电子邮箱待补充】}
+
+\begin{document}
+\makermfrontmatter
+% 固定为 Word 原稿参考文献表的1--20顺序，避免按首次引用重新编号。
+\nocite{ref1,ref2,ref3,ref4,ref5,ref6,ref7,ref8,ref9,ref10,ref11,ref12,ref13,ref14,ref15,ref16,ref17,ref18,ref19,ref20}
+
+氢能是一种清洁、高效的能源载体，在实现碳中和目标中具有重要应用前景\cite{ref1}。储氢是氢能利用的关键环节，其性能直接影响氢能系统的安全性与经济性。相比气态和液态储氢，固态储氢具有体积储氢密度高、安全性和稳定性好等优势，因而成为储氢领域的重要研究方向\cite{ref2}。镁基储氢合金因其理论储氢容量高（7.60 wt.\%）、资源丰富、成本低廉等优点，被认为是具有应用潜力的固态储氢材料之一\cite{ref3}。然而，其实际应用仍面临诸多挑战，主要包括热力学稳定性高、吸放氢反应动力学缓慢以及循环稳定性较差等问题\cite{ref4}。合金化是改善其综合性能的常用方法\cite{ref5,ref6,ref7}。通过引入异质元素，可有效调控材料的晶体结构与电子特性，进而降低脱氢温度、改善反应动力学和循环稳定性。
+
+稀土La易与氢形成稳定的LaH$_x$相。La-Mg二元系热力学评估表明，Mg富集成分区存在Mg$_{17}$La$_2$等La-Mg金属间化合物\cite{ref8}。已有研究报道，Mg$_3$La具有约2.89 wt.\%的可逆储氢量\cite{ref9}；La$_2$Mg$_{17}$在常温、0.5 MPa氢压下可吸收约10个氢原子，储氢量约为1.44 wt.\%\cite{ref10}。这些结果表明Mg-La系合金具有一定的储氢潜力。Mg-Ni-La合金氢化后可形成较稳定的LaH$_x$（x = 2，3）纳米相；该相在循环过程中可与Mg$_2$Ni保持较均匀分布，并有助于稳定颗粒微结构和抑制烧结\cite{ref11}。此外，LaH$_x$可提供氢分子解离、Mg/MgH$_2$成核及氢扩散所需的活性位点和界面通道，从而改善吸放氢动力学\cite{ref11,ref12}。
+
+为改善吸放氢动力学性能，可将Ni作为第三组元引入Mg-La二元合金。已有研究表明，Ni可与Mg形成Mg$_2$Ni相；氢化过程中形成的Mg$_2$NiH$_4$及其与Mg基体构成的多相界面有利于氢的解离、扩散和形核，从而改善Mg-La-Ni合金的吸放氢动力学\cite{ref11,ref12}。Zhang等\cite{ref7}以Mg-5Ni-3La（at.\%）为名义成分，采用熔体快淬制备纳米晶和非晶合金，并与铸态合金进行比较，结果表明快速凝固形成的细化组织可改善该成分合金的吸放氢动力学。Ding等\cite{ref12}制备的Mg-3.8Ni-1.8La（wt.\%）合金在325 ℃、3 MPa下2 h吸氢量超过7.00 wt.\%，在175 ℃、1 MPa下2 h仍可吸氢超过5.00 wt.\%。与本文最接近的是Lv等\cite{ref15}对Mg-xNi-3La（x = 5、10、15、20 at.\%）合金的研究，其结果显示5 at.\% Ni样品具有较好的综合储氢性能，表明性能并不随Ni含量增加而简单单调改善。然而，该研究采用固定3 at.\% La和5～20 at.\% Ni的成分范围，尚未系统比较固定8 wt.\% La条件下0～8 wt.\% Ni含量变化对相关相组成及吸放氢动力学的影响。按名义成分估算，本文合金中的8 wt.\% La约对应1.5～1.6 at.\%，0～8 wt.\% Ni最高约对应3.7 at.\%，均低于上述研究采用的原子分数范围。
+
+区别于已有固定3 at.\% La、考察5～20 at.\% Ni的研究\cite{ref15}，本文在固定La含量为8 wt.\%的条件下设置0、1、2、4和8 wt.\% Ni五种成分，在相同制备与测试条件下联合比较铸态组织、PCT表观热力学参数、$t_{90}$/JMAK脱氢动力学及DSC响应。该低合金化设计旨在以较少的La和Ni添加形成具有动力学促进作用的第二相及多相界面，同时尽可能维持Mg富集基体的质量占比，减少过量合金化对储氢容量和合金元素投入的不利影响。本文的创新点在于，在固定8 wt.\% La条件下系统考察Ni含量变化与Mg$_2$Ni/Mg$_2$NiH$_4$相关相、表观平台热力学参数以及吸放氢动力学之间的关联，从而区分Ni对表观平衡热力学和动力学响应的不同影响，并为兼顾储氢性能、合金元素用量与潜在制备成本的成分设计提供实验依据；相关微观作用路径及其工程经济性仍需通过更直接的界面表征、原位研究和成本评估加以验证。
+
+\section{实验材料与方法}
+\subsection{合金样品制备}
+采用熔炼与铸造法制备5种合金，合金设计成分见表~\ref{tab:1}。熔炼前，将纯Mg、Mg-30La中间合金和Mg-30Ni中间合金于200 ℃预热3 h以上。将纯Mg置于坩埚中，在体积分数为0.1\%的SF$_6$与99.9\%的CO$_2$混合气体保护下熔化；待熔体温度升至730～760 ℃后，按设计成分分别加入预热后的Mg-La和Mg-Ni中间合金。中间合金完全熔化后，对熔体进行搅拌并清理表面浮渣，随后将熔体温度调至700～720 ℃并静置15～20 min。静置完成后，将熔体降温至680～700 ℃并浇注至模具中，冷却获得合金铸锭。从铸锭中取样，经机械切削和粉碎后过80目筛，获得粒径小于约180 μm的合金粉末。为测定合金的实际成分，采用美国Thermo Fisher Scientific公司iCAP 7600型电感耦合等离子体发射光谱仪对合金样品进行成分分析，结果见表~\ref{tab:2}。
+
+\begin{table}[htbp]
+  \centering
+  \bilingualcaption{五种合金的设计成分}{Nominal compositions of the five alloys}
+  \label{tab:1}
+  \begin{tabular}{lccc}
+    \toprule
+    合金样品 & Mg (wt.\%) & La (wt.\%) & Ni (wt.\%) \\
+    \midrule
+    Mg-8La & 92 & 8 & 0 \\
+    Mg-8La-1Ni & 91 & 8 & 1 \\
+    Mg-8La-2Ni & 90 & 8 & 2 \\
+    Mg-8La-4Ni & 88 & 8 & 4 \\
+    Mg-8La-8Ni & 84 & 8 & 8 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\begin{table}[htbp]
+  \centering
+  \bilingualcaption{五种合金的实际成分（ICP测试结果）}{Actual compositions of the five alloys determined by ICP-OES}
+  \label{tab:2}
+  \begin{tabular}{lccc}
+    \toprule
+    合金样品 & Mg (wt.\%) & La (wt.\%) & Ni (wt.\%) \\
+    \midrule
+    Mg-8La & 92.20±0.53 & 7.77±0.02 & 0 \\
+    Mg-8La-1Ni & 91.83±0.68 & 7.94±0.06 & 1.03±0.01 \\
+    Mg-8La-2Ni & 90.78±0.78 & 7.86±0.07 & 1.95±0.01 \\
+    Mg-8La-4Ni & 88.73±0.23 & 7.78±0.04 & 3.79±0.01 \\
+    Mg-8La-8Ni & 84.22±0.82 & 7.85±0.05 & 7.91±0.03 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\subsection{微观组织分析}
+采用德国Bruker公司D8 ADVANCE Da Vinci型多功能X射线衍射仪（XRD）分析合金样品的物相组成，仪器采用Cu靶X射线源和陶瓷X光管，扫描范围为20°～60°，扫描速度设定为1°/min。测试结果通过Jade 6.0软件进行相分析与峰位匹配，对合金主要物相进行定性鉴定。样品的显微形貌及第二相分布采用美国Thermo Fisher Scientific公司Helios 5 UX型聚焦离子束-电子束双束电镜的扫描电子显微镜（SEM）模块观察，采用背散射电子（BSE）成像模式，加速电压为10 kV，电子束束流为1.4 nA；元素分布采用配套Oxford AZtecLive Ultim MAX100型能谱仪（EDS）分析。铸态合金样品经热镶、磨光和抛光处理后观察；粉末态样品则采用棉签蘸取少许样品，轻轻抖动后洒在导电胶上的方法进行制样，随后用气枪吹走浮在表面的粉末，使合金颗粒分布较为均匀。
+
+\subsection{储氢性能测试}
+合金的储氢性能测试包括样品活化、吸放氢热力学性能测试以及吸放氢动力学测试。所有测试均在HPSA-auto型高压体积法储氢装置上进行，试样质量约为0.3 g。在测试前，合金样品在340 ℃下进行充分活化，活化过程包括5个完整的吸放氢循环，每个循环包括8 h吸氢和8 h放氢。用于氢化态XRD和DSC测试的样品均取充分活化后的合金粉末，在340 ℃、3.1 MPa H$_2$压力下氢化8 h后获得。每轮测试前，样品在340 ℃下抽真空1 h，以确保充分脱氢。随后，分别在340、320和300 ℃下测定样品的吸放氢PCT曲线。动力学测试在340、320、300和280 ℃下进行：吸氢压力为3 MPa，放氢背压为0.1 MPa，单次测试均持续8 h。为突出反应初期的速率差异，吸氢曲线统一展示前1 h数据；放氢曲线中Mg-8La展示前180 min，其余含Ni合金展示前30 min。表~\ref{tab:4}列出的吸、放氢量均为8 h测试结束时的累计容量。本文采用$t_{90}$表征脱氢速率。所有$t_{90}$均从完整8 h脱氢曲线读取，定义为累计放氢量绝对值达到相应样品8 h最终放氢量90\%时所需的时间；当90\%容量位于相邻数据点之间时采用线性插值。
+
+\subsection{差示扫描量热测试}
+采用法国凯璞科技集团旗下塞塔拉姆（SETARAM）Themys型高温综合热分析平台对上述氢化后样品进行差示扫描量热（DSC）测试，分析其脱氢热行为。测试时称取样品约60 mg，置于氧化铝坩埚中，以空白氧化铝坩埚作为参比，在高纯氩气保护气氛下进行程序升温测试。测试温度范围为室温至500 ℃，升温速率为5 ℃/min。通过记录样品在程序升温过程中的吸放热变化，获得不同样品的DSC曲线，并据此比较其脱氢起始温度和脱氢峰温。脱氢起始温度统一定义为峰前基线与峰前下降段切线的交点温度。DSC为单次代表性测试，因此相近峰温之间的细微差异仅作数值描述。
+
+\section{实验结果与讨论}
+\subsection{相组成与显微结构分析}
+图~\ref{fig:1}为Mg-8La-xNi（x = 0、1、2、4、8）合金的XRD测试结果。未添加Ni的Mg-8La合金主相为Mg，第二相主要为Mg$_{17}$La$_2$。1Ni样品中Mg$_2$Ni相关峰不明显，可能低于本测试条件下的检出限；在2Ni、4Ni和8Ni样品中可观察到较明确的Mg$_2$Ni衍射峰。随Ni含量增加，Mg$_2$Ni相关衍射峰总体增强，与Mg$_2$Ni相对含量增加的趋势相一致；具体相含量仍需定量相分析确认。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.90\linewidth,height=0.68\textheight,keepaspectratio]{figures/figure-01.png}
+  \bilingualcaption{Mg-8La-xNi（x = 0、1、2、4、8）合金XRD测试结果}{XRD patterns of the Mg-8La-xNi (x = 0, 1, 2, 4, and 8) alloys}
+  \label{fig:1}
+\end{figure}
+图~\ref{fig:2}为Mg-8La-xNi（x = 0、1、2、4、8）合金的整体SEM形貌，图~\ref{fig:3}给出了上述五种合金的代表性SEM及EDS面分布结果。结合XRD、EDS元素分布以及文献报道的同类Mg-La-Ni合金相组成和组织特征\cite{ref13,ref14,ref15}，未添加Ni时的黑色区域可归属为Mg基体，层片状Mg-La共晶主要对应Mg$_{17}$La$_2$相。Mg-8La-1Ni中Ni信号相对较弱，且铸态XRD未明确检出Mg$_2$Ni，因此不对其细小第二相作唯一物相归属。Mg-8La-2Ni中可观察到Mg$_2$Ni衍射峰，EDS亦显示Ni在部分第二相或共晶区域富集，二者共同支持Mg$_2$Ni相关第二相的存在；但受EDS面扫空间分辨率和多相共存影响，不将全部层片状组织唯一归属于Mg$_2$Ni。4Ni和8Ni样品中Mg$_2$Ni衍射峰及Ni富集区域总体更加明显。La富集的块状或共晶区域主要与Mg$_{17}$La$_2$相关，但局部La、Ni共富集区域不作单相唯一归属。
+
+依据上述物相归属，未添加Ni时，Mg$_{17}$La$_2$主要以较细密的层片状共晶形貌分布于Mg基体中。随Ni含量增加，Ni富集的层片状或第二相区域总体更加明显；与Mg$_{17}$La$_2$相关的La富集区域则逐渐呈现尺寸较大的白色块状或粗大片状形貌，表现出局部粗化和连续性降低。1Ni样品的细小第二相不作唯一物相归属；2Ni、4Ni和8Ni样品中Mg$_2$Ni相关衍射峰及Ni富集区域共同支持Mg$_2$Ni相关第二相的存在。
+
+总体而言，Ni添加伴随Mg-La合金铸态组织形貌和第二相构成发生变化。图~\ref{fig:2}显示其总体演化趋势，图~\ref{fig:3}中五种样品的EDS面分布结果进一步反映了Mg、La和Ni的空间分布。本文的物相归属基于XRD、EDS和形貌特征的联合判断；对于局部La、Ni共富集区域以及1Ni样品中的细小第二相，不作单相唯一归属。上述结论均为代表性视场下的定性观察，尚需多视场图像统计和定量相分析进一步验证。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figure-02.png}
+  \bilingualcaption{铸态Mg-8La-xNi（x = 0、1、2、4、8）合金SEM显微图；(a, f) Mg-8La；(b, g) Mg-8La-1Ni；(c, h) Mg-8La-2Ni；(d, i) Mg-8La-4Ni；(e, j) Mg-8La-8Ni}{SEM micrographs of the as-cast Mg-8La-xNi (x = 0, 1, 2, 4, and 8) alloys: (a, f) Mg-8La; (b, g) Mg-8La-1Ni; (c, h) Mg-8La-2Ni; (d, i) Mg-8La-4Ni; and (e, j) Mg-8La-8Ni}
+  \label{fig:2}
+\end{figure}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figure-03.png}
+  \bilingualcaption{铸态Mg-8La-xNi（x = 0、1、2、4、8）合金SEM和EDS结果（从上至下依次为Mg-8La、Mg-8La-1Ni、Mg-8La-2Ni、Mg-8La-4Ni和Mg-8La-8Ni；每行从左至右依次为SEM图及Mg、La和Ni元素面分布，其中Mg-8La合金不含Ni，故未列出Ni元素面分布）}{SEM images and EDS elemental maps of the as-cast Mg-8La-xNi (x = 0, 1, 2, 4, and 8) alloys. From top to bottom: Mg-8La, Mg-8La-1Ni, Mg-8La-2Ni, Mg-8La-4Ni, and Mg-8La-8Ni. Each row shows the SEM image followed by the Mg, La, and Ni elemental maps from left to right; the Ni map is omitted for the Ni-free Mg-8La alloy}
+  \label{fig:3}
+\end{figure}
+为研究合金吸放氢前后的物相转变，对吸氢态和脱氢态合金样品进行XRD分析，结果如图~\ref{fig:4}所示。Mg-8La合金吸氢后的主要物相包括残余Mg、MgH$_2$和LaH$_3$；含Ni合金的吸氢态样品中还检测到Mg$_2$NiH$_4$相。结合铸态XRD结果，Mg和Mg$_2$Ni的可逆氢化反应以及Mg$_{17}$La$_2$在首次活化/初始氢化阶段可能发生的分解反应可表示为：
+
+\begin{align}
+\mathrm{Mg}+\mathrm{H}_2 &\rightarrow \mathrm{MgH}_2, \label{eq:1}\\
+\mathrm{Mg}_2\mathrm{Ni}+2\mathrm{H}_2 &\rightarrow \mathrm{Mg}_2\mathrm{NiH}_4, \label{eq:2}\\
+\mathrm{Mg}_{17}\mathrm{La}_2+20\mathrm{H}_2 &\rightarrow 17\mathrm{MgH}_2+2\mathrm{LaH}_3. \label{eq:3}
+\end{align}
+XRD结果与Mg$_{17}$La$_2$在首次活化/初始氢化阶段分解形成MgH$_2$和LaH$_3$的候选反应路径相一致。脱氢态样品中仍检测到LaH$_3$，且未观察到Mg$_{17}$La$_2$的明显恢复，说明至少在本研究考察的活化与脱氢条件下，Mg$_{17}$La$_2$未发生可检测的重构。脱氢后MgH$_2$和Mg$_2$NiH$_4$相关峰减弱或消失，并出现Mg和Mg$_2$Ni，离线XRD结果与Mg/MgH$_2$及Mg$_2$Ni/Mg$_2$NiH$_4$可逆相转变相一致，但不作为原位反应路径的直接证明。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figure-04.png}
+  \bilingualcaption{吸氢态(a)和脱氢态(b) Mg-8La-xNi（x = 0、1、2、4、8）合金的XRD结果}{XRD patterns of the Mg-8La-xNi (x = 0, 1, 2, 4, and 8) alloys in the (a) hydrogenated and (b) dehydrogenated states}
+  \label{fig:4}
+\end{figure}
+\subsection{储氢热力学性能测试}
+为研究Ni含量对合金储氢热力学性能的影响，分别在340、320和300 ℃下测试Mg-8La-xNi（x = 0、1、2、4、8）合金样品的PCT曲线。由图~\ref{fig:5}可见，各合金样品均具有吸、放氢平台，且平台压力随温度升高而增大。平台压力按各自PCT平台可逆容量中点（约50\%转变量）读取；中点位于相邻测点之间时采用线性插值，吸、放氢平台分别取值。根据表~\ref{tab:3}所列的平台压力，采用van’t Hoff公式计算吸放氢过程的热力学参数\cite{ref17}。
+
+\begin{subequations}\label{eq:4}
+\begin{align}
+\ln(P_{\mathrm{H}_2}/P^0) &= \frac{\Delta H_{\mathrm{abs}}}{RT}-\frac{\Delta S_{\mathrm{abs}}}{R}, \label{eq:4a}\\
+\ln(P_{\mathrm{H}_2}/P^0) &= -\frac{\Delta H_{\mathrm{des}}}{RT}+\frac{\Delta S_{\mathrm{des}}}{R}. \label{eq:4b}
+\end{align}
+\end{subequations}
+式（4a、4b）中，$P_{\mathrm{H}_2}$表示氢气平衡压力，$P^0$表示标准压力（1.01×$10^5$ Pa），$\Delta H$和$\Delta S$分别表示相应反应方向的焓变和熵变，R为气体常数，T为热力学温度。式~\eqref{eq:4a}对应吸氢，$\Delta H_{\mathrm{abs}}$、$\Delta S_{\mathrm{abs}}$取负；式~\eqref{eq:4b}对应放氢，$\Delta H_{\mathrm{des}}$、$\Delta S_{\mathrm{des}}$取正。根据图~\ref{fig:5}中van’t Hoff拟合直线的斜率和截距计算热力学参数，结果见表~\ref{tab:3}。不同Ni含量合金的吸、放氢焓变总体处于相近范围，且随Ni含量变化未呈现严格单调关系。因此，在本研究成分范围内，Ni添加对平衡热力学参数的影响有限，体系仍主要受Mg/MgH$_2$平衡控制，而不宜将小幅数值差异直接解释为热力学稳定性的显著改善。DSC脱氢峰温同时受升温速率和反应动力学影响，不能仅依据峰温变化判断氢化物的平衡热力学稳定性。
+
+\begin{table}[htbp]
+  \centering
+  \bilingualcaption{Mg-8La-xNi（x = 0、1、2、4、8）合金的平台压力及热力学参数}{Plateau pressures and thermodynamic parameters of the Mg-8La-xNi (x = 0, 1, 2, 4, and 8) alloys}
+  \label{tab:3}
+  \scriptsize
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{llccccc}
+    \toprule
+    合金种类 & 测试内容 & \multicolumn{3}{c}{平台压力 (MPa)} & $\Delta H$(kJ/mol) & $\Delta S$(J/(mol·K)) \\
+    \cmidrule(lr){3-5}
+     &  & 340℃ & 320℃ & 300℃ &  &  \\
+    \midrule
+    Mg-8La & 吸氢 & 0.690 & 0.423 & 0.256 & -72.41 & -134.01 \\
+     & 放氢 & 0.658 & 0.397 & 0.223 & 79.13 & 144.66 \\
+    Mg-8La-1Ni & 吸氢 & 0.675 & 0.419 & 0.248 & -73.27 & -135.28 \\
+     & 放氢 & 0.664 & 0.408 & 0.243 & 73.42 & 135.37 \\
+    Mg-8La-2Ni & 吸氢 & 0.675 & 0.418 & 0.248 & -73.15 & -135.07 \\
+     & 放氢 & 0.662 & 0.408 & 0.243 & 73.20 & 134.99 \\
+    Mg-8La-4Ni & 吸氢 & 0.653 & 0.403 & 0.238 & -73.62 & -135.58 \\
+     & 放氢 & 0.640 & 0.391 & 0.231 & 74.43 & 136.72 \\
+    Mg-8La-8Ni & 吸氢 & 0.627 & 0.394 & 0.226 & -74.71 & -137.06 \\
+     & 放氢 & 0.607 & 0.370 & 0.220 & 74.11 & 135.74 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth,height=0.84\textheight,keepaspectratio]{figures/figure-05.png}
+  \bilingualcaption{Mg-8La-xNi（x = 0、1、2、4、8）合金在340、320和300 ℃下的PCT曲线与van’t Hoff拟合结果；(a, b) Mg-8La；(c, d) Mg-8La-1Ni；(e, f) Mg-8La-2Ni；(g, h) Mg-8La-4Ni；(i, j) Mg-8La-8Ni}{PCT curves at 340, 320, and 300 ℃ and van't Hoff plots of the Mg-8La-xNi (x = 0, 1, 2, 4, and 8) alloys: (a, b) Mg-8La; (c, d) Mg-8La-1Ni; (e, f) Mg-8La-2Ni; (g, h) Mg-8La-4Ni; and (i, j) Mg-8La-8Ni}
+  \label{fig:5}
+\end{figure}
+\subsection{吸氢动力学性能测试}
+为研究Ni含量对Mg-8La合金吸氢动力学性能的影响，在340、320、300和280 ℃下测试Mg-8La-xNi（x = 0、1、2、4、8）合金的吸氢动力学曲线。图~\ref{fig:6}统一展示各样品吸氢过程的前1 h数据，用于比较反应初期的吸氢速率；表~\ref{tab:4}列出完整8 h测试结束时的累计吸氢量。PCT与动力学测试采用不同的测试程序：图~\ref{fig:5}通过逐级改变压力获得压力-组成等温线，主要用于读取平台压力；图~\ref{fig:6}和表~\ref{tab:4}则反映固定压力下的吸氢过程及8 h累计容量。由于压力历程和评价目的不同，两类测试的容量分别反映相应测试条件下的储氢行为。由图~\ref{fig:6}可见，含Ni样品在反应初期总体表现出较快的吸氢响应，但不同Ni含量间的变化并非在所有温度下严格单调。表~\ref{tab:4}所列8 h吸氢量用于比较长时累计容量。以340 ℃为例，Mg-8La-8Ni合金的8 h吸氢量为5.80 wt.\%，高于Mg-8La合金的4.97 wt.\%。结合铸态组织和物相结果，Ni添加后Mg$_2$Ni层片状组织的出现与吸氢响应变化相伴，可能对氢传输和界面反应产生影响。
+
+值得注意的是，2Ni样品在各测试温度下的8 h累计吸、放氢量均低于1Ni样品，而4Ni和8Ni样品的容量随后回升，说明Ni含量与长时累计储氢容量之间并非简单的线性关系。同时，2Ni样品在320、300和280 ℃下的$t_{90}$均短于1Ni样品，在340 ℃下二者均约为3 min，表明累计容量与脱氢速度并不同步。该非单调变化可理解为容量组成与反应利用率共同作用的结果：Ni添加会降低高容量Mg基体的质量分数，同时形成的Mg$_2$Ni/Mg$_2$NiH$_4$相关相及多相界面有利于氢反应进行，提高规定时间内的反应程度。不同成分中两方面作用的相对变化，与2Ni的局部容量低值以及4Ni和8Ni的容量回升相对应。由此可见，Ni添加对反应速率和8 h累计储氢容量具有不同的影响规律。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figure-06.png}
+  \bilingualcaption{Mg-8La-xNi（x = 0、1、2、4、8）合金前1 h吸氢曲线；(a) 340 ℃；(b) 320 ℃；(c) 300 ℃；(d) 280 ℃}{Hydrogen absorption curves during the first 1 h for the Mg-8La-xNi (x = 0, 1, 2, 4, and 8) alloys at (a) 340 ℃, (b) 320 ℃, (c) 300 ℃, and (d) 280 ℃}
+  \label{fig:6}
+\end{figure}
+\subsection{放氢动力学性能测试}
+图~\ref{fig:7}为340、320、300和280 ℃下合金的脱氢动力学曲线，其中Mg-8La展示前180 min，其余含Ni合金展示前30 min，用于比较脱氢过程。图中纵轴负值仅表示放氢方向，表~\ref{tab:4}统一以放氢量绝对值列示；表~\ref{tab:4}所列放氢量为完整8 h测试结束时的累计容量。本文以$t_{90}$作为脱氢时间。所有$t_{90}$均基于完整8 h脱氢曲线，并按累计放氢量绝对值达到相应样品8 h最终放氢量90\%时的时间读取；90\%容量位于相邻数据点之间时采用线性插值，各数值取整分钟近似值，结果见表~\ref{tab:4}。图中显示的时间范围仅用于展示，不影响基于完整8 h脱氢曲线读取$t_{90}$。温度降低时，各合金的$t_{90}$总体延长。以Mg-8La-8Ni为例，其在340、320、300和280 ℃下的$t_{90}$分别约为2、3、6和24 min。Mg-8La在280 ℃下未出现可用于动力学拟合的有效放氢过程，因此该温度点未纳入其JMAK和Arrhenius分析。
+
+含Ni合金中Mg$_2$Ni/Mg$_2$NiH$_4$相关相的形成与脱氢动力学改善相对应。以340 ℃为例，Mg-8La-8Ni的$t_{90}$约为2 min，而Mg-8La约为18 min，表明Ni添加后合金的脱氢响应明显加快。结合XRD和组织观察，这种变化可能与Mg$_2$Ni/Mg$_2$NiH$_4$相关相及多相界面对氢迁移和界面反应的促进作用有关。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.95\linewidth,height=0.78\textheight,keepaspectratio,trim=100bp 1080bp 180bp 540bp,clip]{figures/figure-07.png}
+  \bilingualcaption{Mg-8La-xNi（x = 0、1、2、4、8）合金的脱氢动力学曲线；(a) Mg-8La（前180 min）；(b) Mg-8La-1Ni、(c) Mg-8La-2Ni、(d) Mg-8La-4Ni和(e) Mg-8La-8Ni（均为前30 min；Mg-8La在280 ℃下未发生有效放氢）}{Hydrogen desorption kinetic curves of the Mg-8La-xNi (x = 0, 1, 2, 4, and 8) alloys: (a) Mg-8La during the first 180 min; (b) Mg-8La-1Ni, (c) Mg-8La-2Ni, (d) Mg-8La-4Ni, and (e) Mg-8La-8Ni during the first 30 min. No measurable hydrogen desorption occurred for Mg-8La at 280 ℃}
+  \label{fig:7}
+\end{figure}
+\begin{table}[htbp]
+  \centering
+  \bilingualcaption{Mg-8La-xNi（x = 0、1、2、4、8）合金的8 h吸放氢量及脱氢动力学参数}{Hydrogen absorption and desorption capacities after 8 h and desorption kinetic parameters of the Mg-8La-xNi (x = 0, 1, 2, 4, and 8) alloys}
+  \label{tab:4}
+  \scriptsize
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{lcccccccc}
+    \toprule
+    合金种类 & 温度(℃) & 8 h吸氢量(wt.\%) & 8 h放氢量(wt.\%) & $t_{90}$ (min) & $\eta$ & ln k & Arrhenius $R^2$ & 脱氢活化能(kJ/mol) \\
+    \midrule
+    Mg-8La & 340 & 4.97 & 4.60 & 18 & 2.160 & -6.565 & 0.99940 & 158.8 \\
+     & 320 & 4.80 & 4.50 & 46 & 2.210 & -7.569 &  &  \\
+     & 300 & 4.95 & 4.77 & 150 & 2.120 & -8.738 &  &  \\
+    Mg-8La-1Ni & 340 & 5.48 & 4.89 & 3 & 1.260 & -4.660 & 0.96733 & 129.3 \\
+     & 320 & 5.09 & 4.66 & 6 & 1.320 & -5.240 &  &  \\
+     & 300 & 4.89 & 4.45 & 13 & 1.320 & -6.010 &  &  \\
+     & 280 & 4.63 & 4.26 & 67 & 1.030 & -7.440 &  &  \\
+    Mg-8La-2Ni & 340 & 5.08 & 4.61 & 3 & 1.180 & -4.350 & 0.97961 & 108.4 \\
+     & 320 & 4.72 & 4.35 & 4 & 1.210 & -4.860 &  &  \\
+     & 300 & 4.50 & 4.19 & 8 & 1.200 & -5.560 &  &  \\
+     & 280 & 4.32 & 4.05 & 30 & 0.990 & -6.670 &  &  \\
+    Mg-8La-4Ni & 340 & 5.41 & 5.09 & 2 & 1.100 & -4.185 & 0.98995 & 96.8 \\
+     & 320 & 5.23 & 4.87 & 4 & 1.110 & -4.661 &  &  \\
+     & 300 & 4.96 & 4.64 & 7 & 1.090 & -5.355 &  &  \\
+     & 280 & 4.69 & 4.43 & 28 & 0.910 & -6.234 &  &  \\
+    Mg-8La-8Ni & 340 & 5.80 & 5.35 & 2 & 1.040 & -3.981 & 0.99104 & 90.2 \\
+     & 320 & 5.45 & 5.16 & 3 & 1.050 & -4.449 &  &  \\
+     & 300 & 5.26 & 4.96 & 6 & 1.050 & -5.072 &  &  \\
+     & 280 & 4.98 & 4.72 & 24 & 0.830 & -5.899 &  &  \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}
+为定量比较不同Ni含量合金的脱氢表观动力学参数，采用JMAK（Johnson-Mehl-Avrami-Kolmogorov）模型计算速率常数，并结合Arrhenius方程获得脱氢表观活化能。JMAK方程和Arrhenius方程如下所示：\cite{ref17,ref18,ref19,ref20}
+
+\begin{align}
+\ln[-\ln(1-\alpha)] &= \eta\ln k+\eta\ln t, \label{eq:5}\\
+\ln k &= -\frac{E_{\mathrm{a}}}{RT}+\ln A. \label{eq:6}
+\end{align}
+式中，t为反应时间，本研究JMAK计算统一以s为时间单位；k为反应速率常数，单位为s$^{-1}$，表~\ref{tab:4}中的ln k均基于该单位计算；$\alpha$为t时刻的脱氢反应分数，$\eta$为Avrami指数，R为气体常数（8.314 J/(mol·K)），T为热力学温度，A为指前因子。$\alpha$按t时刻累计放氢量绝对值与本次测试8 h终点放氢量之比计算。已有镁基储氢研究通常选取一定的反应分数区间进行JMAK拟合，以减小反应初始阶段和末期偏离线性关系的影响\cite{ref19,ref20}。依据本组曲线的实际线性范围，本文选取多数样品和温度均可覆盖的0.2≤$\alpha$≤0.8区间。除Mg-8La-1Ni合金在280 ℃下的数据外，其余数据均在该区间进行JMAK线性拟合。Mg-8La-1Ni合金在280 ℃下当$\alpha$＞0.6后逐渐偏离线性关系，因此仅选取0.2≤$\alpha$≤0.6区间进行拟合。所得$\eta$、k和Ea均应理解为相应拟合区间及0.1 MPa放氢背压条件下的表观参数。Mg-8La在280 ℃下未发生可用于可靠拟合的有效放氢过程，因此仅采用340、320和300 ℃三个温度点进行Arrhenius拟合；其余合金采用四个温度点。各Arrhenius拟合的$R^2$标注于图~\ref{fig:8}中，并与表观活化能一并列于表~\ref{tab:4}。图~\ref{fig:8}中的Arrhenius参数采用未四舍五入的ln k计算，表~\ref{tab:4}中的ln k按三位小数列示。
+
+JMAK拟合结果表明，Mg-8La合金脱氢过程的Avrami指数$\eta$为2.120～2.210，含Ni合金的$\eta$为0.830～1.320。在共同的300～340 ℃测试温度下及相同的0.2≤$\alpha$≤0.8拟合区间内，$\eta$随Ni含量增加由约2逐步接近1，表明Ni添加改变了脱氢过程的表观动力学行为。该变化提示成核、产物相长大及氢传输过程的相对贡献可能发生调整\cite{ref17,ref18}，从动力学角度为Ni参与调节脱氢过程提供了间接证据，并提示其可能影响脱氢的表观动力学路径。Mg$_2$Ni/Mg$_2$NiH$_4$相转变及组织变化可能对含Ni合金的脱氢响应产生影响，是上述动力学变化的可能原因。然而，放氢驱动力、组织状态及模型适用性均可能影响$\eta$，仅依据该参数尚不能唯一确定速率控制步骤或具体反应路径，相关推测仍需结合脱氢过程中的物相演化进一步验证。
+
+表观活化能是给定JMAK模型、上述反应分数拟合区间及0.1 MPa放氢背压下的综合动力学参数，可用于比较不同合金的脱氢难易程度。如表~\ref{tab:4}所示，Mg-8La、Mg-8La-1Ni、Mg-8La-2Ni、Mg-8La-4Ni和Mg-8La-8Ni合金的脱氢表观活化能分别为158.8、129.3、108.4、96.8和90.2 kJ/mol，随Ni含量增加总体降低。相应地，340 ℃下的$t_{90}$分别约为18、3、3、2和2 min，总体呈缩短趋势。由此可见，在本研究测试条件和评价指标下，Ni含量增加与更快的脱氢响应相对应。
+
+值得指出的是，本文仅采用Arrhenius公式结合JMAK模型计算脱氢表观活化能。吸氢过程未进行同类拟合，是因为现有吸氢曲线在不同阶段可能同时受到表面反应、成核生长和氢扩散等过程影响，尚不能由当前数据确定统一且稳定的JMAK线性区间。因此，本文仅对吸氢曲线进行速率和容量比较，不对其表观活化能及唯一控制机制进行推断。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figure-08.png}
+  \bilingualcaption{Mg-8La-xNi（x = 0、1、2、4、8）合金的JMAK拟合曲线与Arrhenius拟合曲线；(a, b) Mg-8La；(c, d) Mg-8La-1Ni；(e, f) Mg-8La-2Ni；(g, h) Mg-8La-4Ni；(i, j) Mg-8La-8Ni（JMAK计算中t以s计；除Mg-8La-1Ni在280 ℃下采用0.2≤$\alpha$≤0.6外，其余拟合区间均为0.2≤$\alpha$≤0.8）}{JMAK and Arrhenius plots of the Mg-8La-xNi (x = 0, 1, 2, 4, and 8) alloys: (a, b) Mg-8La; (c, d) Mg-8La-1Ni; (e, f) Mg-8La-2Ni; (g, h) Mg-8La-4Ni; and (i, j) Mg-8La-8Ni. Time t is expressed in seconds in the JMAK analysis; the fitting range is 0.2≤$\alpha$≤0.6 for Mg-8La-1Ni at 280 ℃ and 0.2≤$\alpha$≤0.8 for all other datasets}
+  \label{fig:8}
+\end{figure}
+\subsection{差示扫描量热测试}
+为探究Ni添加量对Mg-8La-xNi系合金氢化后样品脱氢热行为的影响，采用差示扫描量热法（DSC）进行测试。由图~\ref{fig:9}可见，各样品在升温过程中均出现明显吸热峰，反映样品中氢化物脱氢过程的综合热效应。0Ni、1Ni、2Ni、4Ni和8Ni样品的放氢起始温度分别为449.2、438.1、438.1、412.2和402.3 ℃，相应脱氢峰温分别为451.5、439.6、439.2、413.8和404.5 ℃。随Ni含量增加，放氢起始温度和脱氢峰温总体降低；其中，8Ni样品的放氢起始温度较0Ni样品降低46.9 ℃。该趋势与表观活化能随Ni含量增加总体降低的结果相一致，说明在相同升温速率下Ni添加使氢化后样品更早出现可检测的吸热脱氢响应，并与更易发生的表观脱氢行为相对应。由于起始温度和峰温均受升温速率、气氛及判定方法影响，本文仅在相同测试条件下进行样品间比较，不将其直接作为平衡热力学稳定性变化的依据。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.92\linewidth,height=0.68\textheight,keepaspectratio]{figures/figure-09.pdf}
+  \bilingualcaption{Mg-8La-xNi系合金氢化后样品的DSC曲线及放氢起始温度（吸热方向向下；曲线沿纵轴平移）}{DSC curves and hydrogen desorption onset temperatures of the hydrogenated Mg-8La-xNi alloy samples. The endothermic direction is downward, and the curves are vertically offset for clarity}
+  \label{fig:9}
+\end{figure}
+\section{结论}
+为探究Ni添加对Mg-8La合金的微观组织与储氢性能的影响，采用熔炼法制备了Mg-8La-xNi（x = 0、1、2、4、8）合金，系统研究了Ni添加量对合金微观组织和储氢性能的影响，得到以下结论：
+
+（1）铸态Mg-8La合金主要由Mg基体和Mg$_{17}$La$_2$相组成。1Ni样品中Mg$_2$Ni未被XRD明确检出，且Ni信号相对较弱，因此不对其细小第二相作唯一物相归属；2Ni、4Ni和8Ni样品中Mg$_2$Ni衍射峰与Ni富集区域共同支持Mg$_2$Ni相关第二相的存在，但不将全部层片状组织唯一归属于Mg$_2$Ni。随Ni含量增加，与Mg$_{17}$La$_2$相关的La富集区域总体呈局部粗化和连续性降低的趋势，Ni富集的层片状或第二相区域总体更加明显。该组织演化及物相归属基于XRD、代表性SEM/EDS视场和形貌特征的综合定性判断。
+
+（2）XRD结果与Mg$_{17}$La$_2$在首次活化/初始氢化阶段分解形成MgH$_2$和LaH$_3$的候选反应路径相一致。脱氢后LaH$_3$仍可被检测到，且未观察到Mg$_{17}$La$_2$的明显恢复，表明在本研究考察条件下Mg$_{17}$La$_2$未发生可检测的重构。离线XRD结果与Mg/MgH$_2$及Mg$_2$Ni/Mg$_2$NiH$_4$可逆相转变相一致，但不作为原位路径的直接证明。
+
+（3）不同Ni含量合金的吸、放氢焓变总体处于相近范围，且未随Ni含量呈现严格单调变化，表明Ni添加对平衡热力学参数的影响有限，体系仍主要受Mg/MgH$_2$平衡控制。DSC结果显示，Mg-8La-8Ni合金氢化后样品的脱氢峰温较Mg-8La降低约47 ℃；该变化主要反映相同测试条件下表观脱氢行为的改善，不能单独作为热力学稳定性降低的依据。
+
+（4）Ni添加后合金反应初期的吸氢响应总体加快，但不同Ni含量间的变化在各温度下并非严格单调。Mg-8La、Mg-8La-1Ni、Mg-8La-2Ni、Mg-8La-4Ni和Mg-8La-8Ni合金的脱氢表观活化能分别为158.8、129.3、108.4、96.8和90.2 kJ/mol，随Ni含量增加总体降低；340 ℃下的$t_{90}$分别约为18、3、3、2和2 min，总体呈缩短趋势。DSC放氢起始温度依次为449.2、438.1、438.1、412.2和402.3 ℃，脱氢峰温依次为451.5、439.6、439.2、413.8和404.5 ℃，均总体呈降低趋势。上述结果表明，Ni含量增加与更快的表观脱氢响应相对应；该动力学变化与Mg$_2$Ni/Mg$_2$NiH$_4$相关相及组织变化相伴，但现有结果仅支持相关性，Ni对表观平衡热力学参数的影响仍较有限。
+
+
+\begin{rmreferences}
+\bibliographystyle{unsrt}
+\bibliography{bib/references}
+\end{rmreferences}
+
+\makermenglish
+\makermmetadata
+\end{document}
