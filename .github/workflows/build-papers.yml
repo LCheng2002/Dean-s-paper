@@ -1,0 +1,132 @@
+name: Build and publish paper PDFs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "La/**"
+      - "Ca/**"
+      - "Ni/**"
+      - ".github/workflows/build-papers.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: paper-pdf-publish
+  cancel-in-progress: true
+
+jobs:
+  build-papers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Check out the current manuscript sources
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Build La manuscript (XeLaTeX)
+        id: la
+        continue-on-error: true
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          working_directory: La/mg-la-4ni-ijhe-zh-2026/project
+          latexmk_use_xelatex: true
+          texlive_version: 2026
+          os: debian
+
+      - name: Build Ca manuscript (XeLaTeX)
+        id: ca
+        continue-on-error: true
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          working_directory: Ca/mg-la-ni-ca-ijhe-zh-2026/project
+          latexmk_use_xelatex: true
+          texlive_version: 2026
+          os: debian
+
+      - name: Build Ni IJHE English manuscript (pdfLaTeX)
+        id: ni_ijhe
+        continue-on-error: true
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          working_directory: Ni/mg-la-ni-ijhe-2026/project
+          texlive_version: 2026
+          os: debian
+
+      - name: Build Ni CJRM Chinese manuscript (XeLaTeX)
+        id: ni_cjrm
+        continue-on-error: true
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          working_directory: Ni/mg-la-ni-cjrm-2026/project
+          latexmk_use_xelatex: true
+          texlive_version: 2026
+          os: debian
+
+      - name: Collect successful builds (remove stale PDFs on failure)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p pdf
+
+          collect_pdf() {
+            local outcome="$1" source="$2" destination="$3"
+            if [[ "$outcome" == "success" && -s "$source" ]]; then
+              cp "$source" "$destination"
+              echo "Published $destination"
+            else
+              rm -f "$destination"
+              echo "::warning::Could not build $destination; any stale file was removed"
+            fi
+          }
+
+          collect_pdf "${{ steps.la.outcome }}" \
+            "La/mg-la-4ni-ijhe-zh-2026/project/main.pdf" "pdf/La.pdf"
+          collect_pdf "${{ steps.ca.outcome }}" \
+            "Ca/mg-la-ni-ca-ijhe-zh-2026/project/main.pdf" "pdf/Ca.pdf"
+          collect_pdf "${{ steps.ni_ijhe.outcome }}" \
+            "Ni/mg-la-ni-ijhe-2026/project/main.pdf" "pdf/Ni-IJHE.pdf"
+          collect_pdf "${{ steps.ni_cjrm.outcome }}" \
+            "Ni/mg-la-ni-cjrm-2026/project/main.pdf" "pdf/Ni-CJRM.pdf"
+
+      - name: Commit available PDFs to the main branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- pdf/
+          if git diff --cached --quiet; then
+            echo "No PDF changes to commit"
+          else
+            git commit -m "Update compiled paper PDFs [skip ci]"
+            git push origin HEAD:main
+          fi
+
+      - name: Report compilation results
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "### LaTeX manuscript build results"
+            echo "| Manuscript | Result |"
+            echo "| --- | --- |"
+            echo "| La (XeLaTeX) | ${{ steps.la.outcome }} |"
+            echo "| Ca (XeLaTeX) | ${{ steps.ca.outcome }} |"
+            echo "| Ni IJHE English (pdfLaTeX) | ${{ steps.ni_ijhe.outcome }} |"
+            echo "| Ni CJRM Chinese (XeLaTeX) | ${{ steps.ni_cjrm.outcome }} |"
+          } >> "$GITHUB_STEP_SUMMARY"
+          if [[ "${{ steps.la.outcome }}" != "success" ||
+                "${{ steps.ca.outcome }}" != "success" ||
+                "${{ steps.ni_ijhe.outcome }}" != "success" ||
+                "${{ steps.ni_cjrm.outcome }}" != "success" ]]; then
+            echo "::error::At least one manuscript failed to compile. See its build step above."
+            exit 1
+          fi
